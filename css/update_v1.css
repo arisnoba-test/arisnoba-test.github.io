@@ -365,4 +365,5 @@ History
 .signature-check { width: 200px; height: 35px; border: 2px solid #f00; line-height: 50px; font-size: 14px; text-align: center;color: #f00; }
 .signature-check td:last-child { width: 35px; height: 35px; border-left: 2px solid #f00; background-image: url("../images/signature.jpg"); background-size: contain; background-repeat: no-repeat; background-position: center center; }
 
-
+.tableBox { display: table; width: 100%; }
+.tableBox div { display: table-cell; }
