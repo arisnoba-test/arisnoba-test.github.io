@@ -1,0 +1,781 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/ubst.css" />
+		<link rel="stylesheet" type="text/css" href="jqgrid/jqgridInit.css"/>
+		<link rel="stylesheet" type="text/css" href="css/update_v1.css" /> <!--- 20160109 렌트업 업데이트 --->
+		
+		<script type="text/javascript" src="js/common/lib/jquery-1.7.2.min.js" ></script>
+		<script type="text/javascript" src="js/common/lib/jquery-ui-1.10.3.custom.js"></script>
+		<script type="text/javascript" src="js/common/lib/jquery.form.min.js"></script>
+		<script type="text/javascript" src="js/common/lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="js/common/util/CommonError.js"></script>
+		<script type="text/javascript" src="js/common/util/CommonUtil.js"></script>
+		<script type="text/javascript" src="js/common/util/NumberUtil.js"></script>
+	</head>
+	
+	<body>
+		<div class="wrap">
+		   <!-- cotents start -->
+		   <div class="side">
+				<h2><img src="images/lnb_02.png" alt="대여관리"></h2>
+				<div class="side_box">
+					<ul class="lnb">
+					
+						<li><a href="puseCarInq.do">실시간 대여현황</a></li>
+						
+					
+						<li><a href="selfRentReg.do">대여가능 차량</a></li>
+						
+						
+						<li><a href="insrCinchReg.do">일반대여 등록</a></li>
+						
+					
+						<li><a href="insrCinchReg.do">보험대차 등록</a></li>
+						
+					
+						<li><a href="lpSelfRentReg.do">장기대여 등록</a></li>
+						
+					
+						<li><a href="carRentInq.do">장기대여 관리</a></li>
+						
+					
+						<li><a href="rentEndInq.do">대여종료</a></li>
+						
+					
+						<li><a href="PayGuaInq.do">보험사 지불보증</a></li>
+						
+						
+						<li><a href="PayGuaInq.do">대여요금 관리</a></li>
+						
+						
+					</ul><!--// lnb -->
+					
+					<div class="side_calendar">
+						<img src="images/title_Rent_calendar.jpg" alt="대여스케줄">
+						<p>
+							<a href="#;" id="btn_dly_sch"><img id="img_dly" src="images/btn_day_on.jpg" alt="일별"></a><a href="#;" id="btn_mon_sch"><img id="img_mon" src="images/btn_month_on.jpg" alt="월별"></a>
+						</p>
+					</div><!--// side_calendar -->
+					
+					<ul class="side_reserve">
+						<li class="today">
+							<strong>2016-01-09</strong>
+							<a href="#;" class="btn_refresh">새로고침</a>
+						</li>
+						<li class="stats">
+							<table>
+								<colgroup>
+									<col width="30%">
+									<col width="*">
+									<col width="30%">
+								</colgroup>
+								<tbody><tr>
+									<th rowspan="3">대여중</th>
+									<th><a href="#" id="btn_self_menu">일반</a></th>
+									<td>0</td>
+								</tr>
+								<tr>
+									<th><a href="#" id="btn_cinch_menu">보험</a></th>
+									<td>0</td>
+								</tr>
+								<tr>
+									<th><a href="#" id="btn_cinch_menu">장기</a></th>
+									<td>0</td>
+								</tr>
+							</tbody></table>
+							
+							<table class="table01">
+								<colgroup>
+									<col width="30%">
+									<col width="*">
+									<col width="30%">
+								</colgroup>										
+								<tbody><tr>
+									<th rowspan="4">차량<br>현황</th>
+									<th><a href="#" id="btn_chku1_menu" title="검사 30일 이전">계약만료</a></th>
+									<td>24</td>
+								</tr>
+		
+								<tr>
+									<th><a href="#" id="btn_clife_menu" title="만료 60일 이전">정기검사</a></th>
+									<td>21</td>
+								</tr>
+								<tr>
+									<th><a href="#" id="btn_cum_menu" title="정비시점 1000km 또는 10일 이전">차량정비</a></th>
+									<td>15</td>
+								</tr>
+								<tr>
+									<th><a href="#" id="btn_cum_menu" title="정비시점 1000km 또는 10일 이전">차량만료</a></th>
+									<td>15</td>
+								</tr>
+							</tbody></table>
+						</li>
+						<li class="stats_bg"></li>
+					</ul><!--// side_reserve -->
+		
+				</div><!--// side_box -->
+			</div>
+			<div class="content">
+				<form name="frm_wb_frm" id="frm_wb_frm" method="post">
+				<input type="hidden" id="rent_gcd" name="rent_gcd" value="" />
+				<input type="hidden" id="rsv_no" name="rsv_no" value="" />
+				<input type="hidden" id="bill_no" name="bill_no" value=""/>
+				<input type="hidden" id="pmt_no" name="pmt_no" value=""/>
+				<input type="hidden" id="aset_no" name="aset_no" value=""/>
+				<input type="hidden" id="std_rent_amt" name="std_rent_amt" value=""/>
+				<input type="hidden" id="dc_amt" name="dc_amt" value=""/>
+				<input type="hidden" id="rent_amt" name="rent_amt" value=""/>
+				<input type="hidden" id="real_rent_amt" name="real_rent_amt" value="" />
+				<input type="hidden" id="scdg_expn" name="scdg_expn" value="" />
+				<input type="hidden" id="ad_expn" name="ad_expn" value="" />
+				<input type="hidden" id="tot_amt" name="tot_amt" value="" />
+				<input type="hidden" id="pmt_part_amt" name="pmt_part_amt" value="" />
+				<input type="hidden" id="pmt_end_amt" name="pmt_end_amt" value="" />
+				<input type="hidden" id="uc_amt" name="uc_amt" value="" />
+				<input type="hidden" id="cont_sts_gcd" name="cont_sts_gcd" value="" />
+				<input type="hidden" id="rent_mile_dits" name="rent_mile_dits" value="" />
+				<input type="hidden" id="rtn_mile_dits" name="rtn_mile_dits" value="" />
+				<input type="hidden" id="car_mdl_cd" name="car_mdl_cd" value=""/>
+				<input type="hidden" id="insMode", name="insMode" value=""/>
+				<input type="hidden" id="cont_no_bef" name="cont_no_bef" value=""/>
+				<input type="hidden" id="cont_no_seq_bef" name="cont_no_seq_bef" value=""/>
+				<input type="hidden" id="car_no_bef" name="car_no_bef" value=""/>
+				<input type="hidden" id="in_path_gb", name="in_path_gb" value="null"/>
+				
+				
+							<div class="bg_top"></div>
+							
+							<div class="cont_box">
+								<div class="cont_head">
+									<h3>일반대여 등록</h3>
+									<ul>
+										<li><span class="home"></span></li>
+										<li>대여관리</li>
+										<li class="current">일반대여 등록</li>
+									</ul>
+								</div><!--// cont_head -->
+								
+								<div class="form_01">
+									<fieldset class="mb10">
+										<table class="table_01">
+											<colgroup>
+												<col width="10%"/>
+												<col width="*"/>
+												<col width="10%"/>
+												<col width="10%"/>
+												<col width="10%"/>
+												<col width="10%"/>
+												<col width="10%"/>
+												<col width="10%"/>
+											</colgroup> 
+											<tbody>
+												<tr>
+													<th class="bg_pink">계약번호</th>
+													<td><input type="text" id="cont_no" name="cont_no" value="" readonly="readonly" style="border:0px;text-align:center;width:65px"/>-<input type="text" id="cont_no_seq" name="cont_no_seq" value="" readonly="readonly" style="border:0px;text-align:center;width:20px;"/></td>
+													<th class="bg_pink">계약상태</th>
+													<td><input type="text" id="cont_sts_nm" name="cont_sts_nm" value="" readonly="readonly" style="border:0px;text-align:center;"/></td>
+													<th class="bg_pink">대여구분</th>
+													<td><input type="text" id="rent_nm" name="rent_nm" value="" readonly="readonly" style="border:0px;text-align:center;"/></td>
+													<th class="bg_pink">연장유무</th>
+													<td></td>
+												</tr>
+											</tbody>
+										</table>
+									</fieldset>
+									
+									<fieldset class="mb10">
+										<table class="table_01">
+											<colgroup>
+												<col width="10%"/>
+												<col width="*"/>
+												<col width="10%"/>
+												<col width="12%"/>
+												<col width="10%"/>
+												<col width="12%"/>
+												<col width="10%"/>
+												<col width="12%"/>
+											</colgroup> 
+											<tbody>
+												<tr>
+													<th>차량번호</th>
+													<td>
+														<input type="text" id="car_no" name="car_no" value="" style="width:50px;text-align:center;" readonly="readonly" />
+														<a href="#;" id="btn_puseCar"><img src="images/btn_ava.jpg" title="가용차량"/></a>
+													</td>
+													<th>연료유형</th>
+													<td><input type="text" id="fuel_tp_nm" name="fuel_tp_nm" value="" readonly="readonly" style="border:0px;width:100px;text-align:center;" /></td>
+													<th>차량색상</th>
+													<td><input type="text" id="car_col_nm" name="car_col_nm" value="" readonly="readonly" style="border:0px;width:100px;text-align:center;"/></td>
+													<th>보유영업소</th>
+													<td><input type="text" id="bof_nm" name="bof_nm" value="" readonly="readonly" style="border:0px;width:100px;text-align:center;"/></td>
+												</tr>
+												<tr>
+													<th>차량모델</th>
+													<td><input type="text" id="mdl_nm" name="mdl_nm" value="" style="width:120px;border:0px;text-align:center;" readonly="readonly"/></td>
+													<th>변속기</th>
+													<td><input type="text" id="gear_tp_nm" name="gear_tp_nm" value="" readonly="readonly" style="border:0px;width:100px;text-align:center;"/></td>
+													<th>승차정원</th>
+													<td><input type="text" id="gcar_cpy_nm" name="gcar_cpy_nm" value="" readonly="readonly" style="border:0px;width:100px;text-align:center;"/></td>
+													<th>보험연령</th>
+													<td>
+														<input type="text" id="insr_age_nm" name="insr_age_nm" value="" readonly="readonly" style="border:0px;width:100px;text-align:center;"/>
+														<input type="hidden" id="insr_age" value=""/>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</fieldset>
+									
+									<fieldset class="mb10">
+										<div class="float_left" style="width:57%">
+											<div>
+												<h4>대여정보</h4>
+												<table class="table_01">
+													<colgroup>
+														<col width="27%"/>
+														<col width="23%"/>
+														<col width="27%"/>
+														<col width="*"/>												
+													</colgroup> 
+													<tbody>
+														<tr>
+															<th>계약상태</th>
+															<td colspan="3">계약등록</td>
+														</tr>
+														<tr>
+															<th>계약일시</th>
+															<td colspan="3"><span>2016-01-05</span>
+															</td>
+														</tr>
+														<tr>
+															<th>대여시작</th>
+															<td colspan="3">
+																<span>
+																	<input type="text" id="rent_ass_ymd" name="rent_ass_ymd" value="2016-01-05" style="text-align:center;" readonly="readonly"/>
+																	<img src="images/btn_calendar.gif" alt="" id="btn_rent_ass_ymd"/>
+																</span>
+																<span>
+																	<input type="text" id="rent_ass_hour" name="rent_ass_hour" value="15" maxlength="2" style="width:20px;text-align:center;"/>
+																	: 
+																	<input type="text" id="rent_ass_min" name="rent_ass_min" value="33" maxlength="2" style="width:20px;text-align:center;"/> 
+																</span>
+															</td>
+														</tr>
+														<tr style="border:2px solid red">
+															<th>반납예정</th>
+															<td colspan="3">
+																<span>
+																	<input type="text" id="rtn_ass_ymd" name="rtn_ass_ymd" value="2016-01-06" style="text-align:center;" readonly="readonly"/>
+																	<img src="images/btn_calendar.gif" alt="" id="btn_rtn_ass_ymd"/>
+																</span>
+																<span>
+																	<input type="text" id="rtn_ass_hour" name="rtn_ass_hour" value="15" maxlength="2" style="width:20px;text-align:center;"/>
+																	: 
+																	<input type="text" id="rtn_ass_min" name="rtn_ass_min" value="33" maxlength="2" style="width:20px;text-align:center;"/> 
+																</span>
+															</td>
+														</tr>
+														<tr>
+															<th>대여종료</th>
+															<td colspan="3">
+																<span>
+																	<input type="text" id="rtn_ymd" name="rtn_ymd" value="" style="text-align:center;" readonly="readonly"/>
+																	<img src="images/btn_calendar.gif" alt="" id="btn_rtn_ymd"/>
+																</span>
+																<span>
+																	<input type="text" id="rtn_hour" name="rtn_hour" value="" maxlength="2" style="width:20px;text-align:center;"/>
+																	: 
+																	<input type="text" id="rtn_min" name="rtn_min" value="" maxlength="2" style="width:20px;text-align:center;"/> 
+																</span>
+															</td>
+														</tr>
+														<tr>
+															<th>대여기간</th>
+															<td colspan="3">
+																<span>
+																	<input type="text" id="rentDds" name="rentDds" value=""  readonly="readonly" style="border:0px;text-align:center;"/>
+																	<input type="hidden" id="rent_dds" name="rent_dds" value=""  />
+																	<input type="hidden" id="rent_time" name="rent_time" value="" />
+																</span>
+															</td>
+														</tr>
+														<tr>
+															<th>인도장소</th>
+															<td colspan="3">
+																<input type="text" id="extr_loc_ctn" name="extr_loc_ctn" value="" style="width:75%text-align:center;"/></td>
+														</tr>
+														<tr>
+															<th>반납장소</th>
+															<td colspan="3">
+																<input type="text" id="rtn_loc_ctn" name="rtn_loc_ctn" value="" style="width:75%text-align:center;"/>
+																<label for="same" class="float_right"><input type="checkbox" id="same"/> 상동</label>
+															</td>
+														</tr>
+														<tr>
+															<th>자차가입여부</th>
+															<td colspan="3">
+																<input type="radio" name="scdg_ent_yn" value="N" checked="checked"/>&nbsp;미가입&nbsp;&nbsp;
+																<input type="radio" name="scdg_ent_yn" value="Y" />&nbsp;가입
+															</td>
+														</tr>
+														<tr>
+															<th>대여직원</th>
+															<td>
+																<input type="text" id="rent_stf_nm" name="rent_stf_nm" maxlength="20" value="홍길동" style="text-align:center; width:100px;"/>
+															</td>
+															<th>반납직원</th>
+															<td>
+																<input type="text" id="rtn_stf_nm" name="rtn_stf_nm" maxlength="20" value="" style="text-align:center; width:100px;"/>
+															</td>													
+														</tr>												
+													</tbody>
+												</table>
+											</div>
+											<div style="margin-top:12px;">
+												<!--------------- 임차인 정보 Area Start --------------->
+												<h4 class="dsply_inl">임차인 정보</h4>&nbsp;&nbsp;고객구분 : <input type="radio" name="cust_gcd" id="cust_gcd" value="01" /> 개인 <input type="radio" name="cust_gcd" id="cust_gcd" value="02"/> 법인<span class="txt_req flt_rgt">(*)표시는 필수 입력 항목입니다.</span><!--- 2016.1.15 수정 --->
+												<table class="table_01">
+													<colgroup>
+														<col width="17%"/>
+														<col width="32%"/>
+														<col width="19%"/>
+														<col width="*"/>
+													</colgroup> 
+													<tbody>
+														<tr>
+															<th>임차인명<span class="txt_req">*</span></th>
+															<td>
+																<input type="text" id="contr_nm" name="contr_nm" maxlength="30" value="" style="width:80px;text-align:center;"/>
+																<input type="hidden" id="cust_no" name="cust_no" value=""/>
+																<a href="#;" id="btn_addr_book_inq"><img src="images/btn_addr.gif" title="주소록 불러오기"/></a>
+															</td>
+															<th align="center" valign="middle">
+																	<input type="text" id="label1" name="label1" value="생년월일"  style="width:50px; font-weight: bold; background-color:#eff3f8; border: none; margin-top: 2px; color: #333; text-align: center;" readonly/><span class="txt_req">*</span>
+																   
+															</th>
+															<td><input type="text" id="contr_sslb_no" name="contr_sslb_no" maxlength="14" value="" style="width:90%;text-align:center;" /><br />
+															만 나이 &nbsp; : &nbsp; <span id="manAge"> </span></td>
+														</tr>
+														<tr>
+															<th>연락처<span class="txt_req">*</span></th>
+															<td>
+																<input type="text" id="contr_cno1" name="contr_cno1" value="" maxlength="3" style="width:20px;text-align:center;"/>-
+																<input type="text" id="contr_cno2" name="contr_cno2" value="" maxlength="4" style="width:25px;text-align:center;"/>-
+																<input type="text" id="contr_cno3" name="contr_cno3" value="" maxlength="4" style="width:25px;text-align:center;"/>
+															</td>
+														
+															<th>일반전화</th>
+															<td>
+																<input type="text" id="contr_gen_tno1" name="contr_gen_tno1" value="" maxlength="3" style="width:20px;text-align:center;"/>-
+																<input type="text" id="contr_gen_tno2" name="contr_gen_tno2" value="" maxlength="4" style="width:25px;text-align:center;"/>-
+																<input type="text" id="contr_gen_tno3" name="contr_gen_tno3" value="" maxlength="4" style="width:25px;text-align:center;"/>
+															</td>
+														</tr>												
+														<tr>
+															<th><!--  상세-->주소<span class="txt_req">*</span></th>
+															<td colspan="3">
+																<input type="text" id="contr_dtl_addr" name="contr_dtl_addr" value="" style="width:80px; margin-bottom: 3px;"/><span class="btn_base" style="margin-left: 5px; margin-top: -2px;"><a href="#">주소검색</a></span><br>
+																<input type="text" id="contr_dtl_addr" name="contr_dtl_addr" value="" style="width:98%; margin-bottom: 3px;"/><br>
+																<input type="text" id="contr_dtl_addr" name="contr_dtl_addr" value="" style="width:98%; "/>
+															</td>
+														</tr>
+														<tr>
+															<th>면허번호<span class="txt_req">*</span></th>
+															<td colspan="3"><input type="text" id="contr_drl_no" name="contr_drl_no" value=""  style="width:160px;"/></td>
+														</tr>
+														<tr>
+															<!-- 
+															<th>유효기간</th>
+															<td>
+																<input type="text" id="drv_avl_prd_ymd" name="drv_avl_prd_ymd" value="" style="width:70%;" readonly="readonly"/>
+																<img src="images/btn_calendar.gif" id="btn_drv_avl_prd_ymd"/>
+															</td>
+															 -->
+															<th>면허종류<span class="txt_req">*</span></th>
+															<td>
+																<select id="contr_drl_knd_gcd" name="contr_drl_knd_gcd" style="width:150px;">
+										                			<option value=''>======= 선택 =======</option><option value='01'>1종보통</option><option value='02'>2종오토</option><option value='03'>2종보통</option><option value='04'>1종대형</option>
+										                		</select>
+															</td>
+															<th>적성검사<span class="txt_req">*</span></th>
+															<td>
+																<input type="text" id="contr_attuc_ymd" name="contr_attuc_ymd" value="" style="width:80px; text-align:center;" readonly="readonly"/>
+																<img src="images/btn_calendar.gif" id="btn_contr_attuc_ymd"/>
+															</td>
+														</tr>												
+													</tbody>
+												</table>
+												<!--------------- 임차인 정보 Area End --------------->
+												<!--------------- 운전자 정보 Area Start --------------->
+												<h4  style="margin-top:12px;">운전자 정보</h4>
+												<div style="margin-top:4px;">
+													<ul class="tab1">
+											            <li id="li_drv" class="on"><a href="#" id="tab_drv">운전자</a></li>
+											            <li id="li_sc_drv"><a href="#" id="tab_sc_drv">제2운전자</a></li>
+											            <li class="li_none">&nbsp;&nbsp;&nbsp;<span class="txt_req">(*)표시는 필수 입력 항목입니다.</span></li>
+											        </ul>
+													
+													<!-- 운전자 정보 -->
+													<table id="drv" class="table_01">
+														<colgroup>
+															<col width="17%"/>
+															<col width="33%"/>
+															<col width="17%"/>
+															<col width="*"/>
+														</colgroup> 
+														<tbody>
+															<tr>
+																<th>성명<span class="txt_req">*</span></th>
+																<td><span class="float_left"><input type="text" id="drv_nm" name="drv_nm" maxlength="20" value="" style="width:125px;" /></span></td>
+																<th>생년월일<span class="txt_req">*</span></th>
+																<td><input type="text" name="drv_sslb_no" id="drv_sslb_no" value="" style="width:120px;text-align: center;" maxlength="6"/></td>
+															</tr>
+															<tr>
+																<th>연락처<span class="txt_req">*</span></th>
+																<td>
+																	<input type="text" id="drv_cno1" name="drv_cno1" value="" maxlength="3" style="width:20px;text-align:center;"/>-
+																	<input type="text" id="drv_cno2" name="drv_cno2" value="" maxlength="4" style="width:25px;text-align:center;"/>-
+																	<input type="text" id="drv_cno3" name="drv_cno3" value="" maxlength="4" style="width:25px;text-align:center;"/>
+																</td>
+																<th>관계</th>
+																<td>
+																	<select id="drv_hurt_gcd" name="drv_hurt_gcd" >
+											                			<option value='01'>본인</option><option value='02'>배우자</option><option value='03'>형제</option><option value='04'>직장동료</option><option value='05'>친인척</option><option value='06'>친구</option><option value='07'>부모</option><option value='08'>자녀</option>
+											                		</select>
+																</td>
+															</tr>
+															<tr>
+																<th><!--  상세-->주소<span class="txt_req">*</span></th>
+																	<td colspan="3">
+																		<input type="text" id="contr_dtl_addr" name="contr_dtl_addr" value="" style="width:80px; margin-bottom: 3px;"/><span class="btn_base" style="margin-left: 5px; margin-top: -2px;"><a href="#">주소검색</a></span><br>
+																<input type="text" id="contr_dtl_addr" name="contr_dtl_addr" value="" style="width:98%; margin-bottom: 3px;"/><br>
+																<input type="text" id="contr_dtl_addr" name="contr_dtl_addr" value="" style="width:98%; "/>
+																	</td>	
+																</tr>
+															<tr>
+																<th>면허번호<span class="txt_req">*</span></th>
+																<td colspan="3"><input type="text" id="drv_drl_no" name="drv_drl_no" value=""  style="width:160px;"/></td>
+															</tr>																									
+															<tr>
+																<!-- 
+																<th>유효기간</th>
+																<td>
+																	<input type="text" id="drv_avl_prd_ymd" name="drv_avl_prd_ymd" value="" style="width:70%;" readonly="readonly"/>
+																	<img src="images/btn_calendar.gif" id="btn_drv_avl_prd_ymd"/>
+																</td>
+																 -->
+																<th>면허종류<span class="txt_req">*</span></th>
+																<td>
+																	<select id="drv_drl_knd_gcd" name="drv_drl_knd_gcd" style="width:150px;">
+											                			<option value=''>======= 선택 =======</option><option value='01'>1종보통</option><option value='02'>2종오토</option><option value='03'>2종보통</option><option value='04'>1종대형</option>
+											                		</select>
+																</td>
+																<th>적성검사<span class="txt_req">*</span></th>
+																<td>
+																	<input type="text" id="drv_attuc_ymd" name="drv_attuc_ymd" value="" style="width:70%; text-align:center;" readonly="readonly"/>
+																	<img src="images/btn_calendar.gif" id="btn_drv_attuc_ymd"/>
+																</td>
+															</tr>		
+														</tbody>
+															<tr>
+																<td colspan="4">
+																	<label for="" class="float_right"><input type="checkbox" id="chk_drv" class="mr5"/>임차인과 동일</label>
+																</td>
+															</tr>
+													</table>
+													<!--// 운전자 정보 -->
+													
+													<!-- 제2 운전자 정보 -->
+													<table id="sc_drv" class="table_01 hide">
+														<colgroup>
+															<col width="17%"/>
+															<col width="33%"/>
+															<col width="17%"/>
+															<col width="*"/>
+														</colgroup> 
+														<tbody>
+															<tr>
+																<th>성명<span class="txt_req">*</span></th>
+																<td><input type="text" id="sc_drv_nm" name="sc_drv_nm" maxlength="20" value="" style="width:90%;"/></td>
+																<th>생년월일<span class="txt_req">*</span></th>
+																<td><input type="text" id="sc_drv_sslb_no" name="sc_drv_sslb_no" value="" style="width:120px; text-align: center;" maxlength="6"/></td>
+															</tr>
+															<tr>
+																<th>연락처<span class="txt_req">*</span></th>
+																<td>
+																	<input type="text" id="sc_drv_cno1" name="sc_drv_cno1" value="" maxlength="3" style="width:20px;text-align:center;"/>-
+																	<input type="text" id="sc_drv_cno2" name="sc_drv_cno2" value="" maxlength="4" style="width:25px;text-align:center;"/>-
+																	<input type="text" id="sc_drv_cno3" name="sc_drv_cno3" value="" maxlength="4" style="width:25px;text-align:center;"/>
+																</td>
+																<th>관계</th>
+																<td>
+																	<select id="sc_drv_hurt_gcd" name="sc_drv_hurt_gcd" >
+											                			<option value='01'>본인</option><option value='02'>배우자</option><option value='03'>형제</option><option value='04'>직장동료</option><option value='05'>친인척</option><option value='06'>친구</option><option value='07'>부모</option><option value='08'>자녀</option>
+											                		</select>
+																</td>
+															</tr>
+															<th><!--  상세-->주소<span class="txt_req">*</span></th>
+																<td colspan="3">
+																	<input type="text" id="contr_dtl_addr" name="contr_dtl_addr" value="" style="width:80px; margin-bottom: 3px;"/><span class="btn_base" style="margin-left: 5px; margin-top: -2px;"><a href="#">주소검색</a></span><br>
+																<input type="text" id="contr_dtl_addr" name="contr_dtl_addr" value="" style="width:98%; margin-bottom: 3px;"/><br>
+																<input type="text" id="contr_dtl_addr" name="contr_dtl_addr" value="" style="width:98%; "/>
+																</td>	
+															</tr>													
+															<tr>
+																<th>면허번호<span class="txt_req">*</span></th>
+																<td colspan="3"><input type="text" id="sc_drv_drl_no" name="sc_drv_drl_no" value="" style="width:160px;"/></td>
+															</tr>
+															<tr>
+																<th>면허종류<span class="txt_req">*</span></th>
+																<td>
+																	<select id="sc_drv_drl_knd_gcd" name="sc_drv_drl_knd_gcd" style="width:150px;">
+											                			<option value=''>======= 선택 =======</option><option value='01'>1종보통</option><option value='02'>2종오토</option><option value='03'>2종보통</option><option value='04'>1종대형</option>
+											                		</select>
+																</td>
+																<th>적성검사<span class="txt_req">*</span></th>
+																<td>
+																	<input type="text" id="sc_drv_attuc_ymd" name="sc_drv_attuc_ymd" value="" style="width:70%;text-align:center;" readonly="readonly"/>
+																	<img src="images/btn_calendar.gif" id="btn_sc_drv_attuc_ymd"/>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+													<!--// 제2 운전자 정보 -->
+												</div>											
+											</div>
+											<!--------------- 운전자 정보 Area End --------------->
+										</div>
+										
+										<div class="float_right" style="width:42%">
+											<h4>요금 정보</h4>
+											<table class="table_01">
+												<colgroup>
+													<col width="30%"/>
+													<col width="*"/>
+												</colgroup> 
+												<tbody>
+													<tr>
+														<th>기본요금</th>
+														<td class="align_right"><span class="money"><input type="text" id="stdRentAmt" value="" readonly="readonly" style="border:0px;text-align:center;"/></span>원</td>
+													</tr>
+													<tr>
+														<th>할인요금</th>
+														<td class="align_right">
+															<span class="float_left"><input type="text" id="dc_rt" name="dc_rt" value="" style="width:20px;text-align:center;"/>%</span>
+															<span class="float_right"><input type="text" id="dcAmt" value="" style="width:80px;text-align:center;"/>원</span>
+														</td>
+													</tr>
+													<tr>
+														<th>대여금액</th>
+														<td class="align_right">
+															<span class="money"><input type="text" id="rentAmt" value="" readonly="readonly" style="border:0px;text-align:center;"/></span>원
+														</td>
+													</tr>
+													<tr style="border:2px solid red">
+														<th style="border-left:2px solid red">실 대여금액</th>
+														<td class="align_right">
+															<input type="text" id="realRentAmt" value="" style="text-align:center;"/>원
+														</td>
+													</tr>
+													<tr>
+		<!-- 												<th rowspan="2">반납</th> -->
+														<th>자차비용</th>
+														<td class="align_right">
+															<span class="money"><input type="text" id="scdgExpn" value="" style="text-align:center;"/></span>원
+														</td>
+													</tr>
+													<tr>
+		<!-- 												<th rowspan="2">반납</th> -->
+														<th>추가요금</th>
+														<td class="align_right">
+															<span class="money"><input type="text" id="adExpn" value="" style="text-align:center;"/></span>원
+														</td>
+													</tr>
+													<tr>
+														<th >총 매출 금액</th>
+														<td class="align_right">
+															<span class="money1"><input type="text" id="totAmt" value="" readonly="readonly" style="text-align:center;"/></span>원
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<h4 style="margin-top:10px;">입금 정보&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="btn_base" style="margin-top: -5px; float: right;"><a href="#">항목추가</a></span></h4>
+											<table class="table_01" style="margin-top:4px;">
+												<colgroup>
+													<col width="14%"/>
+													<col width="10%"/>
+													<col width="*"/>
+													<col width="31%"/>
+												</colgroup> 
+												<thead>
+													<tr>
+														<th>구분</th>
+														<th>입금형태</th>
+														<th>입금일자</th>
+														<th>입금금액</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<th>선금</th>
+														<td>
+															 <select name="pmt_part_setm_gcd" id="pmt_part_setm_gcd">
+									                             <option value='01'>현금</option><option value='02'>신용카드</option><option value='05'>계산서</option><option value='06'>보험</option><option value='07'>기타</option>
+									                         </select>
+														</td>
+														<td>
+															<input type="text" id="pmt_part_ymd" name="pmt_part_ymd" value="" style="width:50px;text-align:center;" readonly="readonly"/>
+															<img src="images/btn_calendar.gif" alt="" id="btn_pmt_part_ymd"/>
+														</td>
+														<td >
+															<input type="text" id="pmtPartAmt" value=">" style="width:52px;text-align:right"/>원
+														</td>
+													</tr>
+													<tr>
+														<th style="line-height: 14px;">중간<br>납입</th>
+														<td>
+															 <select name="pmt_part_setm_gcd" id="pmt_part_setm_gcd">
+									                             <option value='01'>현금</option><option value='02'>신용카드</option><option value='05'>계산서</option><option value='06'>보험</option><option value='07'>기타</option>
+									                         </select>
+														</td>
+														<td>
+															<input type="text" id="pmt_part_ymd" name="pmt_part_ymd" value="" style="width:50px;text-align:center;" readonly="readonly"/>
+															<img src="images/btn_calendar.gif" alt="" id="btn_pmt_part_ymd"/>
+														</td>
+														<td >
+															<input type="text" id="pmtPartAmt" value=">" style="width:52px;text-align:right"/>원&nbsp;<button class="btn_base3">x</button>
+														</td>
+													</tr>
+													<tr>
+														<th>완불</th>
+														<td>
+															 <select name="pmt_end_setm_gcd" id="pmt_end_setm_gcd" class="cm-select">
+									                             <option value='01'>현금</option><option value='02'>신용카드</option><option value='05'>계산서</option><option value='06'>보험</option><option value='07'>기타</option>
+									                         </select>
+														</td>
+														<td>
+															<input type="text" id="pmt_end_ymd" name="pmt_end_ymd" value="" style="width:50px;text-align:center;" readonly="readonly"/>
+															<img src="images/btn_calendar.gif" alt="" id="btn_pmt_end_ymd"/>
+														</td>
+														<td >
+															<input type="text" id="pmtEndAmt" value="" style="width:52px;text-align:right;"/>원
+														</td>
+													</tr>
+													<tr>
+														<th>미수금</th>
+														<td colspan="3" class="money1"><span><input type="text" id="ucAmt" value="" readonly="readonly" style="border:0px;width:80px;text-align:center;"/></span>원</td>
+													</tr>
+												</tbody>
+											</table>
+											
+											<h4  style="margin-top:10px;">면책금 정보</h4>
+											<table class="table_01" style="margin-top:4px;">
+												<colgroup>
+													<col width="15%"/>
+													<col width="*"/>
+												</colgroup>								
+												<tbody>
+													<tr>
+														<th>자차</th>
+														<td >
+															<input type="text" id="scdg_dt_amt" name="scdg_dt_amt" value="" style="width:160px;text-align:right;"/>원
+														</td>
+													</tr>
+												</tbody>
+											</table>									
+																				
+											<h4  style="margin-top:10px;">차량 정보</h4>
+											<table class="table_01" style="margin-top:4px;">
+												<colgroup>
+													<col width="*"/>
+													<col width="35%"/>
+													<col width="35%"/>
+												</colgroup>
+												<thead>
+													<tr>
+														<th>구분</th>
+														<th>대여</th>
+														<th>반납</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<th>연료량</th>
+														<td>
+															<input type="text" id="rent_rem_fuel_qty" name="rent_rem_fuel_qty" value="" style="width:80px;text-align:center;"/>%
+														</td>
+														<td>
+															<input type="text" id="rtn_rem_fuel_qty" name="rtn_rem_fuel_qty" value="" style="width:80px;text-align:center;"/>%
+														</td>
+													</tr>
+													<tr>
+														<th>주행거리</th>
+														<td>
+															<input type="text" id="rentMileDits" value="" style="width:80px;text-align:center;"/>km
+														</td>
+														<td>
+															<input type="text" id="rtnMileDits" value="" style="width:80px;text-align:center;"/>km
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<table class="table_01" style="margin-top:9px;">
+												<colgroup>
+													<col width="30%"/>
+													<col width="*"/>
+												</colgroup>
+												<tbody>
+													<tr>
+														<th>비고</th>
+														<td>
+															<textarea cols="" rows="" style="width:95%; height:173px;" id="bigo_ctn" name="bigo_ctn"></textarea>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</fieldset>
+									<!-- <div class="btn_wrap align_right">
+										<span class="btn_base1"><a href="#;" id="btn_reg">저장</a></span>
+									</div> -->
+								</div>
+								
+								<div class="aside">
+									<div>
+										<p><img src="images/aside_title_rent.png" alt="대여"/></p>
+										<ul>
+											<li><a href="#;" id="btn_contpr"><img src="images/aside_rent_cont.jpg" title="계약서"/></a></li>
+											<li><a href="#;" id="btn_chn"><img src="images/change_car.jpg" title="차량교체"/></a></li>
+											<li><a href="#;" id="btn_to_ins"><img src="images/to_ins.jpg" title="보험으로전환"/></a></li>
+										</ul>
+									</div>
+									<div>
+										<ul>
+											<li><a href="http://www.esero.go.kr" target="new"><img src="images/aside_esero.jpg" title="esero"/></a></li>	
+											<li><a href="#;" id="btn_contFax"><img src="images/aside_fax.jpg" title="fax"/></a></li>
+										</ul>
+									</div>
+									<table height=170 border=0><tr><td></td></tr></table>
+									<div>
+										<ul>
+											<!--  <li><a href="#;" id="btn_adjCmpl"><img src="images/aside_adjend.jpg" title="정산완료"/></a></li>-->
+											<li><a href="#;" id="btn_reg"><img src="images/save.jpg" title="저장"/></a></li>
+											<li><a href="#;" id="btn_cns"><img src="images/aside_rent_cancel.jpg" title="대여취소"/></a></li>
+										</ul>
+									</div>
+								</div><!--// aside -->
+								
+							</div><!--// cont_box -->
+						
+							<div class="bg_foot"></div>
+						</form>
+					</div><!--// content -->
+				</div><!--// container -->
+			</div>
+	</body>
+</html>

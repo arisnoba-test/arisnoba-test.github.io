@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/ubst.css" />
+		<link rel="stylesheet" type="text/css" href="jqgrid/jqgridInit.css"/>
+		<link rel="stylesheet" type="text/css" href="css/update_v1.css" /> <!-- 20160109 렌트업 업데이트 -->
+		
+		<script type="text/javascript" src="js/common/lib/jquery-1.7.2.min.js" ></script>
+		<script type="text/javascript" src="js/common/lib/jquery-ui-1.10.3.custom.js"></script>
+		<script type="text/javascript" src="js/common/lib/jquery.form.min.js"></script>
+		<script type="text/javascript" src="js/common/lib/jquery.blockUI.js"></script>
+		<script type="text/javascript" src="js/common/util/CommonError.js"></script>
+		<script type="text/javascript" src="js/common/util/CommonUtil.js"></script>
+		<script type="text/javascript" src="js/common/util/NumberUtil.js"></script>
+	</head>
+	
+	<body>
+		<div class="container">
+				<div class="side">
+					<h2><img src="images/lnb_04.png" alt="차량관리"></h2>
+					<div class="side_box">
+						<ul class="lnb">
+						
+							<li><a href="retCarInq.do">차량 현황</a></li>
+							<li><a href="carReg.do">차량정보 관리</a></li>
+							<li><a href="carChkuInq.do">차량검사 관리</a></li>
+							<li><a href="cumIchGid.do">정비대상 관리</a></li>
+							<li><a href="cumIchInq.do">정비완료 현황</a></li>
+							<li><a href="cLifeExpInq.do">차령만료 현황</a></li>
+							<li><a href="">폐차 관리</a></li>
+							<li><a href="">이관/매각 관리</a></li>
+							<li><a href="pentAmtInq.do">범칙금관리</a></li>
+						</ul><!--// lnb -->
+						
+						<div class="side_calendar">
+							<img src="images/title_calendar.jpg" alt="스케줄 보기">
+							<p>
+								<a href="#;" id="btn_dly_sch"><img id="img_dly" src="images/btn_day_on.jpg" alt="일별"></a><a href="#;" id="btn_mon_sch"><img id="img_mon" src="images/btn_month_on.jpg" alt="월별"></a>
+							</p>
+						</div><!--// side_calendar -->
+						
+						<ul class="side_reserve">
+							<li class="today">
+								<strong>2016-01-20</strong>
+								<a href="#;" class="btn_refresh">새로고침</a>
+							</li>
+							<li class="stats">
+								<table>
+									<colgroup>
+										<col width="30%">
+										<col width="*">
+										<col width="30%">
+									</colgroup>
+									<tbody><tr>
+										<th rowspan="2">예약</th>
+										<th><a href="#" id="btn_self_menu">셀프</a></th>
+										<td>0</td>
+									</tr>
+									<tr>
+										<th><a href="#" id="btn_cinch_menu">보험대차</a></th>
+										<td>0</td>
+									</tr>
+								</tbody></table>
+								
+								<table class="table01">
+									<colgroup>
+										<col width="30%">
+										<col width="*">
+										<col width="30%">
+									</colgroup>										
+									<tbody><tr>
+										<th rowspan="4">차량<br>현황</th>
+										<th><a href="#" id="btn_chku1_menu" title="검사 30일 이전">정기검사</a></th>
+										<td>24</td>
+									</tr>
+
+									<tr>
+										<th><a href="#" id="btn_clife_menu" title="만료 60일 이전">차령만료</a></th>
+										<td>21</td>
+									</tr>
+									<tr>
+										<th><a href="#" id="btn_cum_menu" title="정비시점 1000km 또는 10일 이전">차량정비</a></th>
+										<td>16</td>
+									</tr>
+								</tbody></table>
+							</li>
+							<li class="stats_bg"></li>
+						</ul><!--// side_reserve -->
+					</div><!--// side_box -->
+				</div><!--// side -->
+				
+        
+
+
+ 
+ <!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-27443644-16', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+ 
+	
+        	<div class="content">
+					<div class="bg_top"></div>
+					
+					<div class="cont_box">
+						<div class="cont_head">
+							<h3>범칙금 등록</h3>
+							<ul>
+								<li><span class="home"></span></li>
+								<li>차량관리</li>
+								<li class="current">범칙금 등록</li>
+							</ul>
+						</div><!--// cont_head -->
+						
+						<form name="frm" id="frm_wb_frm" method="post">    
+						<input type="hidden" name="pentamt_no" id="pentamt_no" value="N150301264">
+						<input type="hidden" name="cont_no" id="cont_no" value="C141103639">
+						<input type="hidden" name="cont_no_seq" id="cont_no_seq" value="001"> 
+						<input type="hidden" name="aset_no" id="aset_no" value="A140801487"> 
+							<fieldset>
+								<h4>대여정보 <span class="btn_base1 btn_h4 float_right"><a href="#;" id="btn_save2">이의신청서</a></span></h4>
+								<table class="table_01">
+									<colgroup>
+										<col width="150px">
+										<col width="100px">
+										<col width="100px">
+										<col width="*">
+									</colgroup> 
+									<tbody>
+										<tr>
+											<th>위반차량</th>
+											<td>
+												<span class="mr5"><input type="text" name="car_no" id="car_no" maxlength="25" value="" class="mr5" style="width:80px">
+												</span>
+											</td>
+											<th>위반일시</th>
+											<td>
+												<span class="mr5"><input type="text" name="viol_ymd" id="viol_ymd" maxlength="10" value="" class="mr5 hasDatepicker" style="width:80px;" readonly="readonly"><img src="images/btn_calendar.gif" id="btn_viol_ymd" alt="달력">
+													<em>
+														<input type="text" name="viol_hour" id="viol_hour" maxlength="2" value="" style="width:20px;">시 
+														<input type="text" name="viol_min" id="viol_min" maxlength="2" value="" style="width:20px;">분
+													</em>
+													<img src="images/btn_search.gif" id="btn_car_info" alt="검색">
+												</span>
+												<span><input type="text" style="border:0px" name="mdl_nm" id="mdl_nm" value="" readonly="readonly"></span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<table class="table_01 mt10">
+									<colgroup>
+										<col width="15%">
+										<col width="35%">
+										<col width="15%">
+										<col width="*">
+									</colgroup> 
+									<tbody>
+										<tr>
+											<th>대여구분</th>
+											<td><input type="text" style="width:90%;border:0px" name="rent_nm" id="rent_nm" value="" readonly="readonly"></td>
+											<th>계약상태</th>
+											<td><input type="text" style="width:90%;border:0px" name="cont_sts_nm" id="cont_sts_nm" value="" readonly="readonly"></td>
+										</tr>
+										<tr>
+											<th>대여시작</th>
+											<td colspan="3">
+												<span class="mr5"><input type="text" style="width:100px;border:0px" name="rent_ass_ymd" id="rent_ass_ymd" value="" readonly="readonly"></span>
+												<span><em><input type="text" style="width:40px;border:0px" name="rent_ass_hour" id="rent_ass_hour" value="" readonly="readonly"></em>:<em><input type="text" style="width:40px;border:0px;text-align:center" name="rent_ass_min" id="rent_ass_min" value="" readonly="readonly"></em></span>
+											</td>
+										</tr>
+										<tr>
+											<th>반납예정</th>
+											<td colspan="3">
+												<span class="mr5"><input type="text" style="width:100px;border:0px" name="rtn_ass_ymd" id="rtn_ass_ymd" value="" readonly="readonly"></span>
+												<span><em><input type="text" style="width:40px;border:0px" name="rtn_ass_hour" id="rtn_ass_hour" value="" readonly="readonly"></em>:<em><input type="text" style="width:40px;border:0px;text-align:center" name="rtn_ass_min" id="rtn_ass_min" value="" readonly="readonly"></em></span>
+											</td>
+										</tr>
+										<tr>
+											<th>반납일시</th>
+											<td colspan="3">
+												<span class="mr5"><input type="text" style="width:100px;border:0px" name="car_whou_ymd" id="car_whou_ymd" value="" readonly="readonly"></span>
+												<span><em><input type="text" style="width:40px;border:0px" name="car_whou_hour" id="car_whou_hour" value="" readonly="readonly"></em>:<em><input type="text" style="width:40px;border:0px;text-align:center" name="car_whou_min" id="car_whou_min" value="" readonly="readonly"></em></span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</fieldset>
+							
+							<fieldset class="mt10">								
+								<h4>임차인 및 운전자 정보</h4>
+								<table class="table_01">
+									<colgroup>
+										<col width="15%">
+										<col width="20%">
+										<col width="7%">
+										<col width="23%">
+										<col width="6%">
+										<col width="*">
+									</colgroup> 
+									<tbody>
+										<tr>
+											<th>임차인</th>
+											<td><input type="text" style="width:45%;border:1px;border-style: solid;border-color:#e4e4e4;" name="contr_nm" id="contr_nm" value="" readonly="readonly">
+											      <input type="text" style="width:45%;border:1px;border-style: solid;border-color:#e4e4e4;" name="contr_cno" id="contr_cno" value="" readonly="readonly">
+											</td>
+											<th>운전면허</th>
+											<td>
+												<input type="text" style="width:35%;border:1px;border-style: solid;border-color:#e4e4e4;" name="contr_drl_knd_nm" id="contr_drl_knd_nm" value="" readonly="readonly">
+												<input type="text" style="width:55%;border:1px;border-style: solid;border-color:#e4e4e4;" name="contr_drl_no" id="contr_drl_no" value="" readonly="readonly">
+											</td>
+											<th>주소</th>
+											<td>
+												<!-- <span class="mr5"><input type="text" style="width:90%;border:0px" name="contr_addr" id="contr_addr" maxlength="1000" value="<//%= "[" + listPent.get(0, "CONTR_PNO") + "]" + listCont.get(0, "CONTR_NEW_PNO_ADDR") + " " + listCont.get(0, "CONTR_DTL_ADDR")%>" /></span> -->
+												<span class="mr5"><input type="text" style="width:90%;border:1px;border-style: solid;border-color:#e4e4e4;" name="contr_addr" id="contr_addr" maxlength="1000" value=""></span>
+											</td>
+										</tr>		
+										<tr>
+											<th>제1운전자</th>
+											<td><input type="text" style="width:45%;border:1px;border-style: solid;border-color:#e4e4e4;" name="drv_nm" id="drv_nm" value="" readonly="readonly">
+											      <input type="text" style="width:45%;border:1px;border-style: solid;border-color:#e4e4e4;" name="drv_cno" id="drv_cno" value="" readonly="readonly">
+											</td>
+											<th>운전면허</th>
+											<td>
+												<input type="text" style="width:35%;border:1px;border-style: solid;border-color:#e4e4e4;" name="drv_drl_knd_nm" id="drv_drl_knd_nm" value="" readonly="readonly">
+												<input type="text" style="width:55%;border:1px;border-style: solid;border-color:#e4e4e4;" name="drv_drl_no" id="drv_drl_no" value="" readonly="readonly">
+											</td>
+											<th>주소</th>
+											<td>
+												<!-- <span class="mr5"><input type="text" style="width:90%;border:0px" name="contr_addr" id="contr_addr" maxlength="1000" value="<//%= "[" + listPent.get(0, "CONTR_PNO") + "]" + listCont.get(0, "CONTR_NEW_PNO_ADDR") + " " + listCont.get(0, "CONTR_DTL_ADDR")%>" /></span> -->
+												<span class="mr5"><input type="text" style="width:90%;border:1px;border-style: solid;border-color:#e4e4e4;" name="drv_dtl_addr" id="drv_dtl_addr" maxlength="1000" value=""></span>
+											</td>
+										</tr>	
+										<tr>
+											<th>제2운전자</th>
+											<td><input type="text" style="width:45%;border:1px;border-style: solid;border-color:#e4e4e4;" name="sc_drv_nm" id="sc_drv_nm" value="" readonly="readonly">
+											      <input type="text" style="width:45%;border:1px;border-style: solid;border-color:#e4e4e4;" name="sc_drv_cno" id="sc_drv_cno" value="" readonly="readonly">
+											</td>
+											<th>운전면허</th>
+											<td>
+												<input type="text" style="width:35%;border:1px;border-style: solid;border-color:#e4e4e4;" name="sc_drv_drl_knd_nm" id="sc_drv_drl_knd_nm" value="" readonly="readonly">
+												<input type="text" style="width:55%;border:1px;border-style: solid;border-color:#e4e4e4;" name="sc_drv_drl_no" id="sc_drv_drl_no" value="" readonly="readonly">
+											</td>
+											<th>주소</th>
+											<td>
+												<!-- <span class="mr5"><input type="text" style="width:90%;border:0px" name="contr_addr" id="contr_addr" maxlength="1000" value="<//%= "[" + listPent.get(0, "CONTR_PNO") + "]" + listCont.get(0, "CONTR_NEW_PNO_ADDR") + " " + listCont.get(0, "CONTR_DTL_ADDR")%>" /></span> -->
+												<span class="mr5"><input type="text" style="width:90%;border:1px;border-style: solid;border-color:#e4e4e4;" name="sc_drv_dtl_addr" id="sc_drv_dtl_addr" maxlength="1000" value=""></span>
+											</td>
+										</tr>																													
+									</tbody>
+								</table>
+							</fieldset>							
+							
+							<fieldset class="mt10">								
+								<h4>위반 정보</h4>
+								<table class="table_01">
+									<colgroup>
+										<col width="15%">
+										<col width="35%">
+										<col width="15%">
+										<col width="*">
+									</colgroup> 
+									<tbody>
+										<tr>
+											<th>위반유형</th>
+											<td>
+												<select name="viol_tp_gcd" id="viol_tp_gcd">
+													<option value="">- 위반유형선택  -</option><option value="01">속도위반</option><option value="02" selected="selected">신호위반</option><option value="03">주정차위반</option><option value="04">통행료위반</option><option value="05">버스전용차로위반</option><option value="06">끼어들기금지위반</option><option value="07">하이패스요금미납</option><option value="08">장애인주차구역위반</option><option value="09">주차요금미납</option>
+												</select>
+											</td>
+											<th>대상자</th>
+											<td>
+												<select name="dfopn_nm" id="dfopn_nm" style="width:105px;">
+																									
+															<option value="" selected="selected"></option>
+													
+																									
+															<option value="" selected="selected"></option>
+													
+																																							
+												</select>
+																
+													<input type="text" style="width:45%;border:1px;border-style: solid;border-color:#e4e4e4;" name="dfopn_drl_no" id="dfopn_drl_no" value="" readonly="readonly">
+													
+													
+													<input type="hidden" style="width:45%;border:1px;border-style: solid;border-color:#e4e4e4;" name="dfopn_dtl_addr" id="dfopn_dtl_addr" value="" readonly="readonly">
+													
+													
+													<input type="hidden" style="width:45%;border:1px;border-style: solid;border-color:#e4e4e4;" name="dfopn_cno" id="dfopn_cno" value="" readonly="readonly">
+																							
+											</td>												
+										</tr>
+										<tr>
+											<th>수신처</th>
+											<td><input type="text" name="isue_inst_nm" id="isue_inst_nm" maxlength="25" value="" style="width:90%"></td>
+											<th>참조</th>
+											<td><input type="text" name="inst_chgr_nm" id="inst_chgr_nm" maxlength="25" value="" style="width:100px"></td>
+										</tr>
+										<tr>
+											<th>전화번호</th>
+											<td>
+												<input type="text" name="inst_chgr_cno1" id="inst_chgr_cno1" maxlength="3" value="" style="width:40px">-
+			                                    <input type="text" name="inst_chgr_cno2" id="inst_chgr_cno2" maxlength="4" value="" style="width:40px">-
+			                                    <input type="text" name="inst_chgr_cno3" id="inst_chgr_cno3" maxlength="4" value="" style="width:40px">
+                                    		</td>
+											<th>팩스번호</th>
+											<td>
+												<input type="text" name="inst_fno1" id="inst_fno1" maxlength="4" value="" style="width:40px">-
+			                                    <input type="text" name="inst_fno2" id="inst_fno2" maxlength="4" value="" style="width:40px">-
+			                                    <input type="text" name="inst_fno3" id="inst_fno3" maxlength="4" value="" style="width:40px">
+											</td>
+										</tr>
+										<tr>
+											<th>납부기한</th>
+											<td><input type="text" name="pm_prd_ymd" id="pm_prd_ymd" maxlength="10" value="" style="width:100px" readonly="readonly" class="hasDatepicker"><img src="images/btn_calendar.gif" id="btn_pm_prd_ymd" alt="달력"></td>
+											<th>범칙금</th>
+											<td>
+												<input type="text" id="imps_pentamt_1" maxlength="15" value="0" style="width:100px">
+												<input type="hidden" name="imps_pentamt" id="imps_pentamt" maxlength="15" value="" style="width:100px">
+											</td>
+										</tr>
+										<tr>
+											<th>위반장소</th>
+											<td colspan="3">
+												<input type="text" name="viol_loc_ctn" id="viol_loc_ctn" maxlength="1000" value="" style="width:90%">
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</fieldset>
+							
+							<fieldset class="mt10">								
+								<h4>이의처리 정보</h4>
+								<table class="table_01">
+									<colgroup>
+										<col width="15%">
+										<col width="35%">
+										<col width="15%">
+										<col width="*">
+									</colgroup> 
+									<tbody>
+										<tr>
+											<th>이의처리 여부</th>
+											<td colspan="3">
+												<input type="radio" name="scdg_ent_yn" value="Y" checked="checked"> 예  <input type="radio" name="scdg_ent_yn" value="N"> 아니오
+											</td>
+										</tr>
+										<tr>
+											<th>처리일시</th>
+											<td colspan="3">
+												<input type="text" name="trt_ymd" id="trt_ymd" maxlength="10" value="" class="mr5 hasDatepicker" style="width:80px;" readonly="readonly"><img src="images/btn_calendar.gif" id="btn_trt_ymd" alt="달력">
+												<em>
+													<input type="text" name="trt_hour" id="trt_hour" maxlength="2" value="00" style="width:20px;">시 
+													<input type="text" name="trt_min" id="trt_min" maxlength="2" value="00" style="width:20px;">분
+												</em>
+												<select name="pentamt_trt_gcd" id="pentamt_trt_gcd" style="display: none;">
+				                            		<option value="02" selected="selected">이의신청</option>
+				                            	</select>
+											</td>
+										</tr>
+										<tr>
+											<th>비고</th>
+											<td colspan="3">
+												<textarea cols="60" rows="3" name="bigo_ctn" id="bigo_ctn" style="width:95%; height:100px;"></textarea>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</fieldset>
+							
+							<div class="btn_wrap align_center">
+								<span class="btn_base1"><a href="#;" id="btn_save">저장</a></span>
+								<span class="btn_base1"><a href="#;" id="">취소</a></span>
+								<span class="btn_base1 float_right"><a href="#;" id="btn_delete">삭제</a></span>
+							</div>
+						</form>
+					</div><!--// cont_box -->
+				
+					<div class="bg_foot"></div>
+				</div><!--// content -->
+			</div>
+	</body>
+</html>
