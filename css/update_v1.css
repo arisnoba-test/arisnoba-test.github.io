@@ -449,3 +449,9 @@ color: #0455a0;
 	color: #3376b8;
 }
 
+.table_list {width: 100%; border: 1px solid #E4E4E4; }
+.table_list th, .table_list tr, .table_list td {padding: 3px 4px; border: 1px solid #E4E4E4; line-height: 25px;}
+.table_list th {background-color: #EFF3F8; text-align: center; font-weight: bold;}
+.table_list .btn_base {margin: 2px 0;}
+
+

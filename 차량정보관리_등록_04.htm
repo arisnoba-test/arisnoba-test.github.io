@@ -25,30 +25,38 @@
 		<div class="wrap"> 
 		   <!-- cotents start -->
 		   <div class="side">
-				<h2><img src="images/lnb_04.png" alt="대여관리"></h2>
+				<h2><img src="images/lnb_02.png" alt="대여관리"></h2>
 				<div class="side_box">
 					<ul class="lnb">
+					
+						<li><a href="puseCarInq.do">실시간 대여현황</a></li>
 						
-						<li><a href="#">차량 현황</a></li>
 					
-						<li><a href="#">차량정보 관리</a></li>
-					
-						<li><a href="#">차량검사 관리</a></li>
-					
-						<li><a href="#">차량정비 관리</a></li>
-					
-						<li><a href="#">정비완료 현황</a></li>
-					
-						<li><a href="#">차령만료 현황</a></li>
-					
-						<li><a href="#">폐차 관리</a></li>
-					
-						<li><a href="#">이관/매각 관리</a></li>
+						<li><a href="selfRentReg.do">대여가능 차량</a></li>
 						
-						<li><a href="#">범칙금 관리</a></li>
 						
-					</ul>
-					<!--// lnb -->
+						<li><a href="insrCinchReg.do">일반대여 등록</a></li>
+						
+					
+						<li><a href="insrCinchReg.do">보험대차 등록</a></li>
+						
+					
+						<li><a href="lpSelfRentReg.do">장기대여 등록</a></li>
+						
+					
+						<li><a href="carRentInq.do">장기대여 관리</a></li>
+						
+					
+						<li><a href="rentEndInq.do">대여종료</a></li>
+						
+					
+						<li><a href="PayGuaInq.do">보험사 지불보증</a></li>
+						
+						
+						<li><a href="PayGuaInq.do">대여요금 관리</a></li>
+						
+						
+					</ul><!--// lnb -->
 					
 					<div class="side_calendar">
 						<img src="images/title_Rent_calendar.jpg" alt="대여스케줄">
@@ -125,75 +133,85 @@
 						<div class="bg_top"></div>
 						
 						<div class="cont_box">
-							<div class="cont_head">
-								<h3>폐차 관리</h3>
-								<ul>
-									<li><span class="home"></span></li>
-									<li>차량관리</li>
-									<li class="current">폐차 관리</li>
-								</ul>
-							</div><!--// cont_head -->
-							
-							<div class="btn_wrap align_right">
-								<span class="btn_base"><a href="#;" onclick="javascript:exportExcel();"><span class="excel"></span>엑셀다운</a></span>
-							</div>
-						
-							<fieldset>
-								<table class="table_01">
-									<colgroup>
-										<col width="*"/>
-										<col width="*"/>
-										<col width="*"/>
-										<col width="*"/>
-										<col width="*"/>
-									</colgroup> 
+								<div class="cont_head">
+									<h3>차량정보 등록</h3>
+									<ul>
+										<li><span class="home"></span></li>
+										<li>차량관리</li>
+										<li class="current">차량정보 관리</li>
+									</ul>
+								</div><!--// cont_head -->
+								
+							<fieldset class="mb10">
+									<table class="table_01">
+										<colgroup>
+											<col width="10%"/>
+											<col width="*"/>
+											<col width="10%"/>
+											<col width="12%"/>
+											<col width="10%"/>
+											<col width="12%"/>
+											<col width="10%"/>
+											<col width="12%"/>
+										</colgroup> 
+										<tbody>
+											<tr>
+												<th><span class="btn_base"><a href="#;" id="">차량선택</a></span></th>
+												<td>00허1234</td>
+												<th>차량모델</th>
+												<td>그랜저HG</td>
+												<th>차량색상</th>
+												<td>검정</td>
+												<th>차량연식</th>
+												<td>2015</td>
+											</tr>
+											<tr>
+												<th>연료유형</th>
+												<td>LPG</td>
+												<th>변속기</th>
+												<td>오토</td>
+												<th>차령만료</th>
+												<td>2020-12-31</td>
+												<th>정기검사</th>
+												<td>2020-12-31</td>
+											</tr>
+										</tbody>
+									</table>
+								</fieldset>
+						<!-- 탭 Area Start -->
+								<table width="100%" class="mb10">
 									<tbody>
 										<tr>
-											<th>기간설정</th>
-											<td>
-												<span>
-													<input type="text" id="sInqCndYmd" name="sInqCndYmd" value="" class="mr5" style="width:80px;text-align:center;" readonly="readonly"/><img id="search_startDay" src="images/btn_calendar.gif" alt="달력" />
-												</span>
-												~
-												<span>
-													<input type="text" id="eInqCndYmd" name="eInqCndYmd" value="" class="mr5" style="width:80px;text-align:center;" readonly="readonly"/><img id="search_endDay" src="images/btn_calendar.gif" alt="달력"/>
-												</span>
-											</td>
-											<th>차량번호</th>
-											<td>
-												<input type="text" id="chkVal" name="chkVal" style="width:50%;"/>
-											</td>
-											<td rowspan="2" class="alg_ct"><span class="btn_base big"><a href="#;" id="btn_inq"><span class="search"></span>조회</a></span>
+											<td width="70%">
+												<ul class="tab1" style="position:relative; z-index:1000;">
+										            <li id="car_01_li" ><a href="#" id="btn_car_01" onclick="javascript:fnTabClick('01');">구입정보</a></li>
+										            <li id="car_02_li"><a href="#" id="btn_car_02" onclick="javascript:fnTabClick('02');">할부정보</a></li>
+										            <li id="car_03_li"><a href="#" id="btn_car_03" onclick="javascript:fnTabClick('03');">보험정보</a></li>
+										            <li id="car_04_li" class="on"><a href="#" id="btn_car_04" onclick="javascript:fnTabClick('04');">검사정보</a></li>
+										            <li id="car_05_li"><a href="#" id="btn_car_05" onclick="javascript:fnTabClick('05');">정비정보</a></li>
+										            <li id="car_06_li"><a href="#" id="btn_car_06" onclick="javascript:fnTabClick('06');">관리비정보</a></li>
+										            <li id="car_07_li"><a href="#" id="btn_car_07" onclick="javascript:fnTabClick('07');">기타정보</a></li>
+									        	</ul>						  
 											</td>
 										</tr>
-										<tr>
-											<th>연도선택</th>
-											<td colspan="3">
-												<select name="cndChk" id="cndChk">
-													<option selected="selected">전체</option>
-								                    <option value="">임차인명</option>
-								                    <option value="">차량번호</option>
-								                    <option value="">차량모델</option>
-												</select>
-											</td>
-
+										<tr height="1">
+											<td></td>
 										</tr>
 									</tbody>
 								</table>
-							</fieldset>
+								<!-- 탭 Area End -->
+							<h4 style="margin-top:10px;">검사 정보 <span class="btn_base" style="margin-top: -5px; float: right;"><a href="#">검사등록</a></span></h4>
 							<!-- 파일 목록 JQgrid Area Start -->
 							<div class="grid_wrap">
 								<div class="jqgrid-th-wrap" id=""  style="width: 1003px;">
 									<table id="celltbl" style="width: 985px;">
 										<colgroup>
-											<col width="53px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
+											<col width="85px">
+											<col width="180px">
+											<col width="180px">
+											<col width="180px">
+											<col width="180px">
+											<col width="180px">
 										</colgroup>
 										<tbody>
 											<tr>
@@ -201,76 +219,53 @@
 													No
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													차량번호
+													검사일
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													차량모델
+													검사결과
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													차량연식
+													검사비용
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													차량등록일
+													다음 검사일
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													차량만료일
-												</th>
-												<th class="ui-state-default ui-th-column ui-th-ltr">
-													연장횟수
-												</th>
-												<th class="ui-state-default ui-th-column ui-th-ltr">
-													폐차일
+													비고
 												</th>
 											</tr>
 										</tbody>
 									</table>
 								</div>
+
 								<div class="jqgrid-td-wrap" style="height: 382px; width: 1003px;">
 									<table id="celltbl" style="width: 985px;">
 										<colgroup>
-											<col width="53px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
-											<col width="133px">
+											<col width="84px">
+											<col width="180px">
+											<col width="180px">
+											<col width="180px">
+											<col width="180px">
+											<col width="180px">
 										</colgroup> 
 										<tbody>
 											<tr>
 												<td>1</td>
-												<td>11허1111</td>
-												<td>그랜저HG</td>
-												<td>2015</td>
 												<td>2016-01-21</td>
+												<td>합격</td>
+												<td>50,000</td>
 												<td>2016-01-21</td>
-												<td>2</td>
-												<td>2016-01-21</td>
+												<td>재검사</td>
 											</tr>
 											<tr>
 												<td>1</td>
-												<td>11허1111</td>
-												<td>그랜저HG</td>
-												<td>2015</td>
 												<td>2016-01-21</td>
+												<td>합격</td>
+												<td>50,000</td>
 												<td>2016-01-21</td>
-												<td>2</td>
-												<td>2016-01-21</td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
 												<td></td>
 											</tr>
 											<tr>
-												<td></td>
-												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -285,32 +280,8 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td></td>
-												<td></td>
 											</tr>
 											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>											
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -325,22 +296,8 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td></td>
-												<td></td>
 											</tr>
 											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -355,22 +312,8 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td></td>
-												<td></td>
 											</tr>
 											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -385,6 +328,12 @@
 												<td></td>
 												<td></td>
 												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
 												<td></td>
 												<td></td>
 											</tr>
@@ -395,12 +344,40 @@
 												<td></td>
 												<td></td>
 												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
 												<td></td>
 												<td></td>
 											</tr>
 											<tr>
 												<td></td>
 												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
 												<td></td>
 												<td></td>
 												<td></td>

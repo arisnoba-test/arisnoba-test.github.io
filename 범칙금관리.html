@@ -25,76 +25,95 @@
 	<div class="wrap"> 
 	   <!-- cotents start -->
 	   <div class="side">
-			<h2><img src="images/lnb_04.png" alt="차량관리"></h2>
-			<div class="side_box">
-				<ul class="lnb">
-				
-					<li><a href="retCarInq.do">차량 현황</a></li>
-					<li><a href="carReg.do">차량정보 관리</a></li>
-					<li><a href="carChkuInq.do">차량검사 관리</a></li>
-					<li><a href="cumIchGid.do">정비대상 관리</a></li>
-					<li><a href="cumIchInq.do">정비완료 현황</a></li>
-					<li><a href="cLifeExpInq.do">차령만료 현황</a></li>
-					<li><a href="">폐차 관리</a></li>
-					<li><a href="">이관/매각 관리</a></li>
-					<li><a href="pentAmtInq.do">범칙금관리</a></li>
-				</ul><!--// lnb -->
-				
-				<div class="side_calendar">
-					<img src="images/title_calendar.jpg" alt="스케줄 보기">
-					<p>
-						<a href="#;" id="btn_dly_sch"><img id="img_dly" src="images/btn_day_on.jpg" alt="일별"></a><a href="#;" id="btn_mon_sch"><img id="img_mon" src="images/btn_month_on.jpg" alt="월별"></a>
-					</p>
-				</div><!--// side_calendar -->
-				
-				<ul class="side_reserve">
-					<li class="today">
-						<strong>2016-01-20</strong>
-						<a href="#;" class="btn_refresh">새로고침</a>
-					</li>
-					<li class="stats">
-						<table>
-							<colgroup>
-								<col width="30%">
-								<col width="*">
-								<col width="30%">
-							</colgroup>
-							<tbody><tr>
-								<th rowspan="2">예약</th>
-								<th><a href="#" id="btn_self_menu">셀프</a></th>
-								<td>0</td>
-							</tr>
-							<tr>
-								<th><a href="#" id="btn_cinch_menu">보험대차</a></th>
-								<td>0</td>
-							</tr>
-						</tbody></table>
+				<h2><img src="images/lnb_04.png" alt="대여관리"></h2>
+				<div class="side_box">
+					<ul class="lnb">
 						
-						<table class="table01">
-							<colgroup>
-								<col width="30%">
-								<col width="*">
-								<col width="30%">
-							</colgroup>										
-							<tbody><tr>
-								<th rowspan="4">차량<br>현황</th>
-								<th><a href="#" id="btn_chku1_menu" title="검사 30일 이전">정기검사</a></th>
-								<td>24</td>
-							</tr>
-
-							<tr>
-								<th><a href="#" id="btn_clife_menu" title="만료 60일 이전">차령만료</a></th>
-								<td>21</td>
-							</tr>
-							<tr>
-								<th><a href="#" id="btn_cum_menu" title="정비시점 1000km 또는 10일 이전">차량정비</a></th>
-								<td>16</td>
-							</tr>
-						</tbody></table>
-					</li>
-					<li class="stats_bg"></li>
-				</ul><!--// side_reserve -->
-			</div><!--// side_box -->
+						<li><a href="#">차량 현황</a></li>
+					
+						<li><a href="#">차량정보 관리</a></li>
+					
+						<li><a href="#">차량검사 관리</a></li>
+					
+						<li><a href="#">차량정비 관리</a></li>
+					
+						<li><a href="#">정비완료 현황</a></li>
+					
+						<li><a href="#">차령만료 현황</a></li>
+					
+						<li><a href="#">폐차 관리</a></li>
+					
+						<li><a href="#">이관/매각 관리</a></li>
+						
+						<li><a href="#">범칙금 관리</a></li>
+						
+					</ul>
+					<!--// lnb -->
+					
+					<div class="side_calendar">
+						<img src="images/title_Rent_calendar.jpg" alt="대여스케줄">
+						<p>
+							<a href="#;" id="btn_dly_sch"><img id="img_dly" src="images/btn_day_on.jpg" alt="일별"></a><a href="#;" id="btn_mon_sch"><img id="img_mon" src="images/btn_month_on.jpg" alt="월별"></a>
+						</p>
+					</div><!--// side_calendar -->
+					
+					<ul class="side_reserve">
+						<li class="today">
+							<strong>2016-01-09</strong>
+							<a href="#;" class="btn_refresh">새로고침</a>
+						</li>
+						<li class="stats">
+							<table>
+								<colgroup>
+									<col width="30%">
+									<col width="*">
+									<col width="30%">
+								</colgroup>
+								<tbody><tr>
+									<th rowspan="3">대여중</th>
+									<th><a href="#" id="btn_self_menu">일반</a></th>
+									<td>0</td>
+								</tr>
+								<tr>
+									<th><a href="#" id="btn_cinch_menu">보험</a></th>
+									<td>0</td>
+								</tr>
+								<tr>
+									<th><a href="#" id="btn_cinch_menu">장기</a></th>
+									<td>0</td>
+								</tr>
+							</tbody></table>
+							
+							<table class="table01">
+								<colgroup>
+									<col width="30%">
+									<col width="*">
+									<col width="30%">
+								</colgroup>										
+								<tbody><tr>
+									<th rowspan="4">차량<br>현황</th>
+									<th><a href="#" id="btn_chku1_menu" title="검사 30일 이전">계약만료</a></th>
+									<td>24</td>
+								</tr>
+		
+								<tr>
+									<th><a href="#" id="btn_clife_menu" title="만료 60일 이전">정기검사</a></th>
+									<td>21</td>
+								</tr>
+								<tr>
+									<th><a href="#" id="btn_cum_menu" title="정비시점 1000km 또는 10일 이전">차량정비</a></th>
+									<td>15</td>
+								</tr>
+								<tr>
+									<th><a href="#" id="btn_cum_menu" title="정비시점 1000km 또는 10일 이전">차량만료</a></th>
+									<td>15</td>
+								</tr>
+							</tbody></table>
+						</li>
+						<li class="stats_bg"></li>
+					</ul><!--// side_reserve -->
+		
+				</div><!--// side_box -->
 		</div><!--// side -->
 		<div class="content">
 			<form name="frm_wb_frm" id="frm_wb_frm" method="post">
@@ -169,17 +188,17 @@
 							<div class="jqgrid-th-wrap" id=""  style="width: 1003px;">
 								<table id="celltbl" style="width: 985px;">
 									<colgroup>
-										<col width="36px"><!-- no -->
-										<col width="89px">
-										<col width="89px">
-										<col width="89px">
-										<col width="89px">
-										<col width="89px">
-										<col width="89px">
-										<col width="139px"><!-- 위반장소 -->
-										<col width="89px">
-										<col width="109px">
-										<col width="69px">
+										<col width="35px"><!-- no -->
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
+										<col width="95px"><!-- 위반장소 -->
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
 									</colgroup> 
 									<tbody>
 										<tr>
@@ -223,17 +242,17 @@
 							<div class="jqgrid-td-wrap" style="height: 382px; width: 1003px;">
 								<table id="celltbl" style="width: 985px;">
 									<colgroup>
-										<col width="35px"><!-- no -->
-										<col width="88px">
-										<col width="88px">
-										<col width="89px">
-										<col width="89px">
-										<col width="89px">
-										<col width="89px">
-										<col width="139px"><!-- 위반장소 -->
-										<col width="89px">
-										<col width="109px">
-										<col width="69px">
+										<col width="34px"><!-- no -->
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
+										<col width="95px"><!-- 위반장소 -->
+										<col width="95px">
+										<col width="95px">
+										<col width="95px">
 									</colgroup> 
 									<tbody>
 										<tr>
