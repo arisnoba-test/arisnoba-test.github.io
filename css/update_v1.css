@@ -356,6 +356,9 @@ History
 
 }
 
+/*김정현*/
+
+
 .pop_body h4 {
 	background: url("../images/icon_bg.png") 0px -631px no-repeat;
 height: 14px;
@@ -376,7 +379,7 @@ color: #0455a0;
 .tableBox { display: table; width: 100%; }
 .tableBox div { display: table-cell; vertical-align: middle; }
 
-.v-align-t{ vertical-align: top;}
+.v-align-t { vertical-align: top;}
 
 .tab-vl {
 
