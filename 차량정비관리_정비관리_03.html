@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<link rel="stylesheet" type="text/css" href="css/ubst.css" />
+	<link rel="stylesheet" type="text/css" href="jqgrid/jqgridInit.css"/>
+	<link rel="stylesheet" type="text/css" href="jqgrid/ui.jqgrid.css"/>
+	<link rel="stylesheet" type="text/css" href="css/update_v1.css" /> <!-- 20160109 렌트업 업데이트 -->
+	
+	<script type="text/javascript" src="js/common/lib/jquery-1.7.2.min.js" ></script>
+	<script type="text/javascript" src="js/common/lib/jquery-ui-1.10.3.custom.js"></script>
+	<script type="text/javascript" src="js/common/lib/jquery.form.min.js"></script>
+	<script type="text/javascript" src="js/common/lib/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="js/common/util/CommonError.js"></script>
+	<script type="text/javascript" src="js/common/util/CommonUtil.js"></script>
+	<script type="text/javascript" src="js/common/util/NumberUtil.js"></script>
+	</head>
+	
+	<body style="background: rgb(255, 255, 255);" cz-shortcut-listen="true"> <!--<![endif]-->
+		<div class="pop_wrap">
+			<h1>
+				<span>정비항목 등록</span>
+			</h1>
+			<form name="frm" id="frm_wb_frm" method="post">
+			<input type="hidden" name="cust_clt_no" id="cust_clt_no" value="">
+			<input type="hidden" name="rem_cash" id="rem_cash" value="7340">
+			<div class="pop_body">
+				<fieldset>
+					<div class="float_left" style="width:700px">
+						<table class="table_01 mb10">
+							<colgroup>
+								<col width="130px">
+								<col width="*">
+							</colgroup> 
+							<tbody>
+								<tr>
+									<th>차량정보</th>
+									<td>00허 1234</td>
+									
+								</tr>
+								<tr>
+									<th>현재 주행거리</th>
+									<td><input type="text" /> km <span class="btn_base"><a href="#">관제주행거리 가져오기</a></span></td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table_01 ">
+							<colgroup><col width="130px" /><col width="13%" /><col width="*" /></colgroup>
+							<tbody>
+								<tr>
+									<th rowspan="2">정비항목</th><td style="border-right:0;">교환주기</td><td style="border-left:0;">8,000 km</td>
+								</tr>
+								<tr>
+									<td style="border-right:0;">남은교환거리</td><td style="border-left:0;">3,000km</td>
+								</tr>
+								<tr>
+									<td style="padding:0; margin:0; border-right:0;">
+										<ul class="tab-vl" style="position:relative; z-index:1000;">		  	
+											<li id="car_01_li" class=""><a href="#" id="btn_car_01" onclick="javascript:fnTabClick('01');">엔진오일</a></li>
+											<li id="car_02_li" class=""><a href="#" id="btn_car_02" onclick="javascript:fnTabClick('02');">미션오일</a></li>
+											<li id="car_03_li" class="on"><a href="#" id="btn_car_03" onclick="javascript:fnTabClick('03');">브레이크오일</a></li>
+											<li id="car_05_li" class=""><a href="#" id="btn_car_05" onclick="javascript:fnTabClick('05');">브레이크패드</a></li>
+											<li id="car_04_li" class=""><a href="#" id="btn_car_04" onclick="javascript:fnTabClick('04');">에어크리너</a></li>
+											<li id="car_04_li"><a href="#" id="btn_car_04" onclick="javascript:fnTabClick('04');">냉각수</a></li>
+											<li id="car_04_li"><a href="#" id="btn_car_04" onclick="javascript:fnTabClick('04');">파워스티어링오일</a></li>
+											<li id="car_04_li"><a href="#" id="btn_car_04" onclick="javascript:fnTabClick('04');">연료필터</a></li>
+											<li id="car_04_li"><a href="#" id="btn_car_04" onclick="javascript:fnTabClick('04');">점화플러그</a></li>
+											<li id="car_04_li"><a href="#" id="btn_car_04" onclick="javascript:fnTabClick('04');">배터리</a></li>
+										</ul>
+									</td>
+									<td style="border-left:0; padding:10px;" colspan="2" class="v-align-t">
+										<table width="100%;" class="v-align-t ">
+											<colgroup>
+												<col width="20%" /><col width="80%" />
+											</colgroup>
+											<tr>
+												<td>교환일</td>
+												<td><input type="text" /></td>
+											</tr>
+											<tr>
+												<td>교환시 누적거리</td>
+												<td><input type="text" /></td>
+											</tr>
+											<tr>
+												<td>정비비용</td>
+												<td> <input type="text" /></td>
+											</tr>
+											<tr>
+												<td>다음 교환거리</td>
+												<td>23,000 km</td>
+											</tr>
+											<tr>
+												<td>비고</td>
+												<td><textarea style="width:400px;"name="" id="" cols="30" rows="10"></textarea>	
+												</td>
+											</tr>
+										</table>
+										<span class="btn_base float_right" style="margin-top:10px;"><a href="#">저장</a></span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div><!--// 전화번호 입력 -->
+				</fieldset>
+				
+				<div class="btn_wrap">
+					<span class="btn_base1"><a href="#;" id="btn_save">저장</a></span>
+					<span class="btn_base1"><a href="#;" id="btn_close">닫기</a></span>
+				</div>
+				<div class="box_foot"></div>
+			</div>
+			</form>
+		</div><!--// pop_wrap_01 -->
+	</body>
+</html>
