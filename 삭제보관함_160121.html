@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<link rel="stylesheet" type="text/css" href="css/ubst.css" />
+	<link rel="stylesheet" type="text/css" href="jqgrid/jqgridInit.css"/>
+	<link rel="stylesheet" type="text/css" href="jqgrid/ui.jqgrid.css"/>
+	<link rel="stylesheet" type="text/css" href="css/update_v1.css" /> <!--- 20160109 렌트업 업데이트 --->
+	
+	<script type="text/javascript" src="js/common/lib/jquery-1.7.2.min.js" ></script>
+	<script type="text/javascript" src="js/common/lib/jquery-ui-1.10.3.custom.js"></script>
+	<script type="text/javascript" src="js/common/lib/jquery.form.min.js"></script>
+	<script type="text/javascript" src="js/common/lib/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="js/common/util/CommonError.js"></script>
+	<script type="text/javascript" src="js/common/util/CommonUtil.js"></script>
+	<script type="text/javascript" src="js/common/util/NumberUtil.js"></script>
+	</head>
+	
+	<body style="background: rgb(255, 255, 255);" cz-shortcut-listen="true"> <!--<![endif]-->
+		<div class="pop_wrap">
+			<h1>
+				<span>삭제보관함</span>
+			</h1>
+			<form name="frm" id="frm_wb_frm" method="post">
+			<input type="hidden" name="cust_clt_no" id="cust_clt_no" value="">
+			<input type="hidden" name="rem_cash" id="rem_cash" value="7340">
+			<div class="pop_body">
+				<span class="btn_spc dark">
+					<a href="#">삭제</a>
+				</span>&nbsp;
+				<span class="btn_spc green">
+					<a href="#">복구</a>
+				</span>
+				<fieldset>
+					<div class="float_left" style="width:700px">
+						<!---- 파일 목록 JQgrid Area Start ---->
+							<div class="grid_wrap">
+								<div class="jqgrid-th-wrap" id=""  style="width: 700px;">
+									<table id="celltbl" style="width: 682px;">
+										<colgroup>
+											<col width="20px">
+											<col width="105px">
+											<col width="40px">
+											<col width="55px">
+											<col width="60px">
+											<col width="60px">
+											<col width="101px">
+											<col width="101px">
+											<col width="40px">
+											<col width="60px">
+											<col width="40px">
+										</colgroup> 
+										<tbody>
+											<tr>
+												<th class="ui-state-default ui-th-column ui-th-ltr">
+													<input type="checkbox" >
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr">
+													계약번호
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr lnhgt_12">
+													대여<br>구분
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr">
+													임차인명
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr">
+													차량번호
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr">
+													차량모델
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr">
+													대여시작일
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr">
+													대여종료일
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr lnhgt_12">
+													대여<br>일수
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr">
+													대여금액
+												</th>
+												<th class="ui-state-default ui-th-column ui-th-ltr lnhgt_12">
+													등록<br>구분
+												</th>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="jqgrid-td-wrap" style="height: 382px; width: 700px;">
+									<table id="celltbl" style="width: 682px;">
+										<colgroup>
+											<col width="19px">
+											<col width="105px">
+											<col width="40px">
+											<col width="55px">
+											<col width="60px">
+											<col width="60px">
+											<col width="101px">
+											<col width="101px">
+											<col width="40px">
+											<col width="60px">
+											<col width="40px">
+										</colgroup>
+										<tbody>
+											<tr>
+												<td><input type="checkbox" id="same"></td>
+												<td>C150922057-001</td>
+												<td>일반</td>
+												<td>이순신</td>
+												<td>11허1111</td>
+												<td>스파크</td>
+												<td>2016-01-13 13:52</td>
+												<td>2016-01-13 13:52</td>
+												<td>2</td>
+												<td>200,000</td>
+												<td><img src="images/Pc.gif"></td>
+											</tr>
+											<tr>
+												<td><input type="checkbox" id="same"></td>
+												<td>C150922057-001</td>
+												<td>일반</td>
+												<td>이순신</td>
+												<td>11허1111</td>
+												<td>스파크</td>
+												<td>2016-01-13 13:52</td>
+												<td>2016-01-13 13:52</td>
+												<td>2</td>
+												<td>200,000</td>
+												<td><img src="images/Pc.gif"></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						<!---- 파일 목록 JQgrid Area End ---->
+					</div>
+					<div class="paginate" id="paging">
+						<strong>1</strong> <a href="javascript:fnSearchPage(2)">2</a> <a href="javascript:fnSearchPage(3)">3</a>
+					</div>
+				</fieldset>
+				
+				<div class="btn_wrap">
+					<span class="btn_base1"><a href="#;" id="btn_close">닫기</a></span>
+				</div>
+				<div class="box_foot"></div>
+			</div>
+			</form>
+		</div><!--// pop_wrap_01 -->
+	</body>
+</html>

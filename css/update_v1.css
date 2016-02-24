@@ -28,6 +28,10 @@ History
 		float: right;
 	}
 	
+	.v-align-t { 
+		vertical-align: top;
+		}
+	
 	.dsply_inl {
 		display: inline;
 	}
@@ -204,6 +208,44 @@ History
 		background-position: right -250px;
 	}
 	
+	.btn_h4 {
+		margin-top: -5px;
+		}
+		
+		
+		
+	/** 탭 Tab **/
+	
+	.tab-vl li { 
+		text-align: center; 
+		width: 100%; 
+		}
+
+	.tab-vl li a { 
+		display:inline-block;
+		width: 130px;
+		border: 1px solid #E4E4E4; border-bottom: 0px; border-left: 0px;
+		padding: 12px 10px;
+		background-color: #EFF3F8;
+		text-decoration: none;
+		font-weight: bold;
+	}
+	
+	.tab-vl li:first-child a {
+		border-top: 0px;
+		}
+		
+	.tab-vl li a:hover {
+		color: #3376b8;
+		}
+		
+	.tab-vl li.on a {
+		border-right: 1px;
+		background-color: #fff;
+		color: #3376b8;
+	}
+	
+	
 	
 	/** 필수입력항목 표시 **/
 	
@@ -270,6 +312,36 @@ History
 	    border: 1px solid #bdc5d6;
 	    line-height: 25px;
 	}
+	
+	.tableBox { 
+		display: table; 
+		width: 100%; 
+		}
+		
+	.tableBox div { 
+		display: table-cell; 
+		vertical-align: middle; 
+		}
+		
+	.table_list {
+		width: 100%; 
+		border: 1px solid #E4E4E4; 
+		}
+		
+	.table_list th, .table_list tr, .table_list td {
+		padding: 3px 4px; 
+		border: 1px solid #E4E4E4; 
+		line-height: 25px;
+		}
+		
+	.table_list th {
+		background-color: #EFF3F8; 
+		text-align: center; 
+		font-weight: bold;}
+		
+	.table_list .btn_base {
+		margin: 2px 0;
+		}
 	
 	
 	/** Table Inside 테이블 내 테이블 **/
@@ -392,8 +464,53 @@ History
 		font-size: 11px;
 	}
 	
+	
+	
+	/** 기타 Etc **/
+	
+	.signature { 
+		width: 50px; 
+		height: 50px;  
+		color: #f00; 
+		background-image: url("../images/signature.jpg"); 
+		background-size: contain; 
+		background-repeat: no-repeat; 
+		background-position: center center; 
+	}
+	
+	.signature-preview { 
+		width: 100%; 
+		text-align: center; 
+		height: 100px; 
+		line-height: 100px; 
+		background-color: #eee; 
+		display: inline-block; 
+	}
+	
+	.signature-check { 
+		width: 200px; 
+		height: 35px; 
+		border: 2px solid #f00; 
+		line-height: 50px; 
+		font-size: 14px; 
+		text-align: center;
+		color: #f00; 
+		}
+		
+	.signature-check td:last-child { 
+		width: 35px; 
+		height: 35px; 
+		border-left: 2px solid #f00; 
+		background-image: url("../images/signature.jpg"); 
+		background-size: contain; 
+		background-repeat: no-repeat; 
+		background-position: center center; 
+		}
+
 
 }
+
+
 
 
 
@@ -453,5 +570,74 @@ color: #0455a0;
 .table_list th, .table_list tr, .table_list td {padding: 3px 4px; border: 1px solid #E4E4E4; line-height: 25px;}
 .table_list th {background-color: #EFF3F8; text-align: center; font-weight: bold;}
 .table_list .btn_base {margin: 2px 0;}
+.table_01.align_left th {text-align: left;}
+
+.grid_wrap.align_center table td {text-align: center;}
 
 
+.btn_spc.org {
+		
+	}
+.noti-check {
+	font-size: 11px;
+	margin-top: 10px;
+}
+.noti-check ul, .noti-check ul li {list-style: square; line-height: 1.5em;}
+.noti-check ul {padding-left: 14px;}
+.noti-check ul li {  }
+
+.pop-head h2 {text-align: center; line-height: 10rem; font-size: 30px;}
+
+.slt_company { margin-top: 9px; width: 155px;}
+
+.table_01-3 {width: 100%;}
+.table_01-3 tr th {
+	background: #D0D8E8;
+	padding: 2px 4px;
+    border: 1px solid #bdc5d6;
+    line-height: 20px;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+.table_01-3 tr td.shead {background-color: #eff3f8;}
+.table_01-3 tr td {
+	background: #fff;
+	padding: 2px 4px;
+    border: 1px solid #bdc5d6;
+    line-height: 20px;
+}
+
+.smsBox {
+    width: 360px;
+    height: 685px;
+    background-image: url(../images/phone.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.sms_text {
+    display: block;
+    outline: none;
+    border: 0px;
+    border-bottom: 1px solid #ccc;
+    width: 320px;
+    height: 220px;
+    resize: none;
+    margin: 0px auto 10px;
+    font-size: 14px;
+}
+.tel-box {
+    width: 100%;
+    margin: 10px auto 0px;
+    
+    height: 225px;
+    overflow: auto;
+    text-align: center;
+}
+
+.smsBox-inner {
+    width: 330px;
+    margin: 70px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}

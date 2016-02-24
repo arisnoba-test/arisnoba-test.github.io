@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<link rel="stylesheet" type="text/css" href="css/ubst.css" />
+	<link rel="stylesheet" type="text/css" href="jqgrid/jqgridInit.css"/>
+	<link rel="stylesheet" type="text/css" href="jqgrid/ui.jqgrid.css"/>
+	<link rel="stylesheet" type="text/css" href="css/update_v1.css" /> <!-- 20160109 렌트업 업데이트 -->
+	
+	<script type="text/javascript" src="js/common/lib/jquery-1.7.2.min.js" ></script>
+	<script type="text/javascript" src="js/common/lib/jquery-ui-1.10.3.custom.js"></script>
+	<script type="text/javascript" src="js/common/lib/jquery.form.min.js"></script>
+	<script type="text/javascript" src="js/common/lib/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="js/common/util/CommonError.js"></script>
+	<script type="text/javascript" src="js/common/util/CommonUtil.js"></script>
+	<script type="text/javascript" src="js/common/util/NumberUtil.js"></script>
+	</head>
+	
+	<body style="background: rgb(255, 255, 255);" cz-shortcut-listen="true"> <!--<![endif]-->
+		<div class="pop_wrap">
+			<h1>
+				<span>캐시충전</span>
+			</h1>
+			<form name="frm" id="frm_wb_frm" method="post">
+			<input type="hidden" name="cust_clt_no" id="cust_clt_no" value="">
+			<input type="hidden" name="rem_cash" id="rem_cash" value="7340">
+			<div class="pop_body">
+				<fieldset>
+					<div class="float_left" style="width:700px">
+						<table class="table_01 mb10">
+							<colgroup>
+								<col width="20%">
+								<col width="80%">
+							</colgroup> 
+							<tbody>
+								<tr>
+									<th>보유캐시</th>
+									<td> 464,321</td>
+								</tr>
+								<tr>
+									<th>캐시충전</th>
+									<td>
+										<label style="display:inline-block; width:100px;" for="c5"><input type="radio" name="cc" id="c5" /> 5,000원 </label>
+										<label style="display:inline-block; width:100px;" for="c10"><input type="radio" name="cc" id="c10" /> 10,000원 </label>
+										<label style="display:inline-block; width:100px;" for="c20"><input type="radio" name="cc" id="c20" /> 20,000원 </label>
+										<label style="display:inline-block; width:100px;" for="c30"><input type="radio" name="cc" id="c30" /> 30,000원 </label><br />
+										<label style="display:inline-block; width:100px;" for="c50"><input type="radio" name="cc" id="c50" /> 50,000원 </label>
+										<label style="display:inline-block; width:100px;" for="c100"><input type="radio" name="cc" id="c100" /> 100,000원 </label>
+										<label style="display:inline-block; width:300px;" for="c0"> <input type="radio" name="cc" id="c0"  /> 기타 <input type="text" /></label>
+									</td>
+								</tr>
+								<tr>
+									<th>결제수단</th>
+									<td>
+										<label style="display:inline-block; width:150px;" for="type1"><input type="radio" name="py" id="type1" /> 신용카드 </label>
+										<label style="display:inline-block; width:150px;" for="type2"><input type="radio" name="py" id="type2" /> 실시간 계좌이체 </label>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</fieldset>
+				
+				<div class="btn_wrap">
+					<span class="btn_base1"><a href="#;" id="btn_save">결제</a></span>
+					<span class="btn_base1"><a href="#;" id="btn_close">취소</a></span>
+				</div>
+				<div class="box_foot"></div>
+			</div>
+			</form>
+		</div><!--// pop_wrap_01 -->
+	</body>
+</html>

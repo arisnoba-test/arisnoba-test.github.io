@@ -29,32 +29,7 @@
 				<div class="side_box">
 					<ul class="lnb">
 					
-						<li><a href="puseCarInq.do">실시간 대여현황</a></li>
-						
-					
-						<li><a href="selfRentReg.do">대여가능 차량</a></li>
-						
-						
-						<li><a href="insrCinchReg.do">일반대여 등록</a></li>
-						
-					
-						<li><a href="insrCinchReg.do">보험대차 등록</a></li>
-						
-					
-						<li><a href="lpSelfRentReg.do">장기대여 등록</a></li>
-						
-					
-						<li><a href="carRentInq.do">장기대여 관리</a></li>
-						
-					
-						<li><a href="rentEndInq.do">대여종료</a></li>
-						
-					
-						<li><a href="PayGuaInq.do">보험사 지불보증</a></li>
-						
-						
-						<li><a href="PayGuaInq.do">대여요금 관리</a></li>
-						
+						<li><a href="puseCarInq.do">웹FAX</a></li>
 						
 					</ul><!--// lnb -->
 					
@@ -134,11 +109,10 @@
 						
 						<div class="cont_box">
 							<div class="cont_head">
-								<h3>실시간 대여현황</h3>
+								<h3>웹FAX 전송관리</h3>
 								<ul>
 									<li><span class="home"></span></li>
-									<li>대여관리</li>
-									<li class="current">실시간 대여현황</li>
+									<li class="current">웹FAX</li>
 								</ul>
 							</div><!--// cont_head -->
 							
@@ -149,62 +123,26 @@
 							<fieldset>
 								<table class="table_01">
 									<colgroup>
-										<col width="8%"/>
+										<col width="*"/>
 										<col width="*"/>
 										<col width="8%"/>
-										<col width="12%"/>
-										<col width="8%"/>
-										<col width="12%"/>
 										<col width="10%"/>
 									</colgroup> 
 									<tbody>
 										<tr>
-											<th>대여시작일</th>
+											<th>기간설정</th>
 											<td>
-												<select id="selInqYmd" name="selInqYmd">
-													<option value="day">오늘</option>
-													<option value="week">1주일</option>
-													<option value="mon">1개월</option>
-													<option value="mon3">3개월</option>
-													<option value="ent" selected="selected">직접입력</option>
-												</select>
 												<span>
-													<input type="text" id="sInqCndYmd" name="sInqCndYmd" value="" class="mr5" style="width:80px;text-align:center;" readonly="readonly"/><img id="search_startDay" src="images/btn_calendar.gif" alt="달력" />
+													<input type="text" id="sInqCndYmd" name="sInqCndYmd" value="" class="mr5" style="width:100px;text-align:center;" readonly="readonly"/><img id="search_startDay" src="images/btn_calendar.gif" alt="달력" />
 												</span>
 												~
 												<span>
-													<input type="text" id="eInqCndYmd" name="eInqCndYmd" value="" class="mr5" style="width:80px;text-align:center;" readonly="readonly"/><img id="search_endDay" src="images/btn_calendar.gif" alt="달력"/>
+													<input type="text" id="eInqCndYmd" name="eInqCndYmd" value="" class="mr5" style="width:100px;text-align:center;" readonly="readonly"/><img id="search_endDay" src="images/btn_calendar.gif" alt="달력"/>
 												</span>
 											</td>
-											<th>대여구분</th>
-											<td>
-												<select name="rent_gcd" id="rent_gcd">
-													
-													<option selected="selected" value="">===전체===</option>
-								                	<option value="01">셀프</option>
-								                	<option value="02">보험</option>
-								                	<option value="03">장기</option>
-												</select>
+											<td class="alg_ct"><span class="btn_base"><a href="#;"><span class="search"></span>조회</a></span>
 											</td>
-											<th>차량상태</th>
-											<td>
-												<select name="cont_sts_gcd" id="cont_sts_gcd">
-													<option value='' selected='selected'>전체</option><option value='02'>계약등록</option><option value='03'>계약종료</option><option value='04'>계약연장</option><option value='05'>계약취소</option>
-												</select>
-											</td>
-											<td rowspan="2" class="alg_ct"><span class="btn_base big"><a href="#;" id="btn_inq"><span class="search"></span>조회</a></span>
-											</td>
-										</tr>
-										<tr>
-											<th>검색선택</th>
-											<td colspan="5">
-												<select name="cndChk" id="cndChk">
-													<option selected="selected">전체</option>
-								                    <option value="">임차인명</option>
-								                    <option value="">차량번호</option>
-								                    <option value="">차량모델</option>
-												</select>
-												<input type="text" id="chkVal" name="chkVal" style="width:50%;"/>
+											<td class="alg_ct"><span class="btn_base"><a href="#;">팩스 재전송</a></span>
 											</td>
 										</tr>
 									</tbody>
@@ -215,17 +153,14 @@
 								<div class="jqgrid-th-wrap" id=""  style="width: 1003px;">
 									<table id="celltbl" style="width: 985px;">
 										<colgroup>
-											<col width="33px">
-											<col width="130px">
-											<col width="76px">
-											<col width="80px">
-											<col width="89px">
-											<col width="89px">
-											<col width="132px">
-											<col width="132px">
-											<col width="88px">
-											<col width="78px">
-											<col width="58px">
+											<col width="43px">
+											<col width="143px">
+											<col width="133px">
+											<col width="133px">
+											<col width="133px">
+											<col width="133px">
+											<col width="133px">
+											<col width="133px">
 										</colgroup>
 										<tbody>
 											<tr>
@@ -233,118 +168,64 @@
 													No
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													계약번호
+													수신자
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													대여구분
+													수신번호
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													임차인명
+													제목
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													차량번호
+													상태
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													차량모델
+													결과
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													대여시작일
+													발송시간
 												</th>
 												<th class="ui-state-default ui-th-column ui-th-ltr">
-													예상종료일
-												</th>
-												<th class="ui-state-default ui-th-column ui-th-ltr">
-													대여일수
-												</th>
-												<th class="ui-state-default ui-th-column ui-th-ltr">
-													대여금액
-												</th>
-												<th class="ui-state-default ui-th-column ui-th-ltr">
-													등록구분
+													수신시간
 												</th>
 											</tr>
 										</tbody>
 									</table>
 								</div>
 								<div class="jqgrid-td-wrap" style="height: 382px; width: 1003px;">
-									<div class="lypop_jq1" style="left:190px; top:50px;">
-										<table>
-											<tr>
-												<th>접수번호</th>
-												<td>15-123456</td>
-											</tr>
-											<tr>
-												<th>보험사</th>
-												<td>현대해상</td>
-											</tr>
-											<tr>
-												<th>보상담당</th>
-												<td>정주영</td>
-											</tr>
-											<tr>
-												<th>연락처</th>
-												<td>010-3333-4444</td>
-											</tr>
-										</table>
-									</div>
 									<table id="celltbl" style="width: 985px;">
 										<colgroup>
-											<col width="32px">
-											<col width="130px">
-											<col width="76px">
-											<col width="80px">
-											<col width="89px">
-											<col width="89px">
-											<col width="132px">
-											<col width="132px">
-											<col width="88px">
-											<col width="78px">
-											<col width="58px">
+											<col width="43px">
+											<col width="143px">
+											<col width="133px">
+											<col width="133px">
+											<col width="133px">
+											<col width="133px">
+											<col width="133px">
+											<col width="133px">
 										</colgroup> 
 										<tbody>
 											<tr>
 												<td>1</td>
-												<td>C150922057-001</td>
-												<td>일반</td>
 												<td>이순신</td>
-												<td>11허1111</td>
-												<td>스파크</td>
-												<td>2016-01-13 13:52</td>
-												<td>2016-01-13 13:52</td>
-												<td>2일 3시간</td>
-												<td>200,000</td>
-												<td><img src="images/Pc.gif"></td>
+												<td>02-1234-1234</td>
+												<td>차량등록증</td>
+												<td>발송대기</td>
+												<td>발송성공</td>
+												<td>2016-01-21 18:18:12</td>
+												<td>2016-01-21 18:18:12</td>
 											</tr>
 											<tr>
 												<td>1</td>
-												<td>C150922057-001</td>
-												<td>보험</td>
 												<td>이순신</td>
-												<td>11허1111</td>
-												<td>스파크</td>
-												<td>2016-01-13 13:52</td>
-												<td>2016-01-13 13:52</td>
-												<td>2일 3시간</td>
-												<td>200,000</td>
-												<td><img src="images/Pc.gif"></td>
+												<td>02-1234-1234</td>
+												<td>차량등록증</td>
+												<td>발송대기</td>
+												<td>발송성공</td>
+												<td>2016-01-21 18:18:12</td>
+												<td>2016-01-21 18:18:12</td>
 											</tr>
 											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -363,27 +244,8 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
 											</tr>
 											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -402,9 +264,6 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
 											</tr>
 											<tr>
 												<td></td>
@@ -414,28 +273,9 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
+												<td></td>											
 											</tr>
 											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -454,27 +294,8 @@
 												<td></td>
 												<td></td>
 												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
 											</tr>
 											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-											<tr>
-												<td></td>
-												<td></td>
-												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -493,6 +314,13 @@
 												<td></td>
 												<td></td>
 												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -506,6 +334,13 @@
 												<td></td>
 												<td></td>
 												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
 												<td></td>
 												<td></td>
 												<td></td>
@@ -514,6 +349,23 @@
 												<td></td>
 												<td></td>
 												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
 												<td></td>
 												<td></td>
 												<td></td>

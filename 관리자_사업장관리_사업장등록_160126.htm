@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<link rel="stylesheet" type="text/css" href="css/ubst.css" />
+	<link rel="stylesheet" type="text/css" href="jqgrid/jqgridInit.css"/>
+	<link rel="stylesheet" type="text/css" href="jqgrid/ui.jqgrid.css"/>
+	<link rel="stylesheet" type="text/css" href="css/update_v1.css" /> <!-- 20160109 렌트업 업데이트 -->
+	
+	<script type="text/javascript" src="js/common/lib/jquery-1.7.2.min.js" ></script>
+	<script type="text/javascript" src="js/common/lib/jquery-ui-1.10.3.custom.js"></script>
+	<script type="text/javascript" src="js/common/lib/jquery.form.min.js"></script>
+	<script type="text/javascript" src="js/common/lib/jquery.blockUI.js"></script>
+	<script type="text/javascript" src="js/common/util/CommonError.js"></script>
+	<script type="text/javascript" src="js/common/util/CommonUtil.js"></script>
+	<script type="text/javascript" src="js/common/util/NumberUtil.js"></script>
+	</head>
+	
+	<body style="background: rgb(255, 255, 255);" cz-shortcut-listen="true"> <!--<![endif]-->
+		<div class="pop_wrap">
+			<h1>
+				<span>사업장 등록</span>
+			</h1>
+			<form name="frm" id="frm_wb_frm" method="post">
+			<input type="hidden" name="cust_clt_no" id="cust_clt_no" value="">
+			<input type="hidden" name="rem_cash" id="rem_cash" value="7340">
+			<div class="pop_body">
+				<h4>본사 정보</h4>
+				<fieldset>
+					<div class="float_left" style="width:700px">
+						<table class="table_01 mb10">
+							<colgroup>
+								<col width="20%">
+								<col width="80%">
+							</colgroup> 
+							<tbody>
+								<tr>
+									<th>사업자번호</th>
+									<td><input type="text" value="124-51-58625" /></td>
+								</tr>
+								<tr>
+									<th>업체명</th>
+									<td><input type="text" value="테스트 렌트카" /></td>
+								</tr>
+								<tr>
+									<th>대표자 명</th>
+									<td><input type="text" value="홍길동" /></td>
+								</tr>
+								<tr>
+									<th>법인 번호</th>
+									<td><input type="text" value="111111-111111" /></td>
+								</tr>
+							</tbody>
+						</table>
+						<h4>사업장 정보</h4>
+						<table class="table_01 mb10">
+							<colgroup><col width="20%;" /><col width="80%;" /></colgroup>
+							<tbody>
+								<tr>
+									<th>사업자 번호</th><td><input type="text" /> <span class="btn_base"> <a href="#">본사와동일</a></span></td>
+								</tr>
+								<tr>
+									<th>사업장 명</th><td><input type="text" /></td>
+								</tr>
+								<tr>
+									<th>사업장 유형</th>
+									<td>
+										<select name="cndChk" id="cndChk">
+											<option selected="selected">선택</option>
+											<option value="">유형1</option>
+											<option value="">유형2</option>
+										</select></td>
+								</tr>
+								<tr>
+									<th>대표자명</th><td><input type="text" /></td>
+								</tr>
+								<tr>
+									<th>연락처</th><td><input type="text" /></td>
+								</tr>
+								<tr>
+									<th>FAX</th><td><input type="text" /></td>
+								</tr>
+								<tr>
+									<th>주소</th><td><input type="text" /> <span class="btn_base"><a href="#">주소검색</a></span> <input type="text" style="width:50%;" /></td>
+								</tr>
+								<tr>
+									<th>상세주소</th><td><input type="text" style="width:80%;" /></td>
+								</tr>
+								<tr>
+									<th>은행/계좌번호</th>
+									<td>
+										<select name="cndChk" id="cndChk">
+											<option selected="selected">은행 명</option>
+											<option value="">유형1</option>
+											<option value="">유형2</option>
+										</select>
+										<input type="text" placeholder="계좌번호" />
+									</td>
+								</tr>
+								<tr>
+									<th>예금주명</th><td><input type="text" /></td>
+								</tr>
+								<tr>
+									<th>사용여부</th>
+									<td>
+										<select name="cndChk" id="cndChk">
+											<option selected="selected">선택</option>
+											<option value="">유형1</option>
+											<option value="">유형2</option>
+										</select></td>
+								</tr>
+								<tr>
+									<th>관제 ID</th><td><input type="text" /></td>
+								</tr>
+								<tr>
+									<th>관제 비밀번호</th><td><input type="text" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</div><!--// 전화번호 입력 -->
+				</fieldset>
+				
+				<div class="btn_wrap">
+					<span class="btn_base1"><a href="#;" id="btn_save">저장</a></span>
+					<span class="btn_base1"><a href="#;" id="btn_close">취소</a></span>
+					<!-- <span class="btn_base1 float_right"><a href="#;" id="btn_close">삭제</a></span> -->
+				</div>
+				<div class="box_foot"></div>
+			</div>
+			</form>
+		</div><!--// pop_wrap_01 -->
+	</body>
+</html>

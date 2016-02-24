@@ -1,0 +1,555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<link rel="stylesheet" type="text/css" href="css/ubst.css" />
+<link rel="stylesheet" type="text/css" href="jqgrid/jqgridInit.css"/>
+<link rel="stylesheet" type="text/css" href="jqgrid/ui.jqgrid.css"/>
+<link rel="stylesheet" type="text/css" href="css/update_v1.css" /> <!--- 20160109 렌트업 업데이트 --->
+
+<script type="text/javascript" src="js/common/lib/jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="js/common/lib/jquery-ui-1.10.3.custom.js"></script>
+<script type="text/javascript" src="js/common/lib/jquery.form.min.js"></script>
+<script type="text/javascript" src="js/common/lib/jquery.blockUI.js"></script>
+<script type="text/javascript" src="js/common/util/CommonError.js"></script>
+<script type="text/javascript" src="js/common/util/CommonUtil.js"></script>
+<script type="text/javascript" src="js/common/util/NumberUtil.js"></script>
+<script type="text/javascript" src="js/common/util/GridInitUtil.js" ></script>
+</head>
+
+
+<body>
+	<div class="wrap"> 
+		<!-- cotents start -->
+		<div class="side">
+			<h2><img src="images/lnb_02.png" alt="대여관리"></h2>
+			<div class="side_box">
+				<ul class="lnb">
+				
+					<li><a href="puseCarInq.do">실시간 대여현황</a></li>
+					
+				
+					<li><a href="selfRentReg.do">대여가능 차량</a></li>
+					
+					
+					<li><a href="insrCinchReg.do">일반대여 등록</a></li>
+					
+				
+					<li><a href="insrCinchReg.do">보험대차 등록</a></li>
+					
+				
+					<li><a href="lpSelfRentReg.do">장기대여 등록</a></li>
+					
+				
+					<li><a href="carRentInq.do">장기대여 관리</a></li>
+					
+				
+					<li><a href="rentEndInq.do">대여종료</a></li>
+					
+				
+					<li><a href="PayGuaInq.do">보험사 지불보증</a></li>
+					
+					
+					<li><a href="PayGuaInq.do">대여요금 관리</a></li>
+					
+					
+				</ul><!--// lnb -->
+				
+				<div class="side_calendar">
+					<img src="images/title_Rent_calendar.jpg" alt="대여스케줄">
+					<p>
+						<a href="#;" id="btn_dly_sch"><img id="img_dly" src="images/btn_day_on.jpg" alt="일별"></a><a href="#;" id="btn_mon_sch"><img id="img_mon" src="images/btn_month_on.jpg" alt="월별"></a>
+					</p>
+				</div><!--// side_calendar -->
+				
+				<ul class="side_reserve">
+					<li class="today">
+						<strong>2016-01-09</strong>
+						<a href="#;" class="btn_refresh">새로고침</a>
+					</li>
+					<li class="stats">
+						<table>
+							<colgroup>
+								<col width="30%">
+								<col width="*">
+								<col width="30%">
+							</colgroup>
+							<tbody><tr>
+								<th rowspan="3">대여중</th>
+								<th><a href="#" id="btn_self_menu">일반</a></th>
+								<td>0</td>
+							</tr>
+							<tr>
+								<th><a href="#" id="btn_cinch_menu">보험</a></th>
+								<td>0</td>
+							</tr>
+							<tr>
+								<th><a href="#" id="btn_cinch_menu">장기</a></th>
+								<td>0</td>
+							</tr>
+						</tbody></table>
+						
+						<table class="table01">
+							<colgroup>
+								<col width="30%">
+								<col width="*">
+								<col width="30%">
+							</colgroup>										
+							<tbody><tr>
+								<th rowspan="4">차량<br>현황</th>
+								<th><a href="#" id="btn_chku1_menu" title="검사 30일 이전">계약만료</a></th>
+								<td>24</td>
+							</tr>
+	
+							<tr>
+								<th><a href="#" id="btn_clife_menu" title="만료 60일 이전">정기검사</a></th>
+								<td>21</td>
+							</tr>
+							<tr>
+								<th><a href="#" id="btn_cum_menu" title="정비시점 1000km 또는 10일 이전">차량정비</a></th>
+								<td>15</td>
+							</tr>
+							<tr>
+								<th><a href="#" id="btn_cum_menu" title="정비시점 1000km 또는 10일 이전">차량만료</a></th>
+								<td>15</td>
+							</tr>
+						</tbody></table>
+					</li>
+					<li class="stats_bg"></li>
+				</ul><!--// side_reserve -->
+	
+			</div><!--// side_box -->
+		</div>
+		<div class="content">
+			<form name="frm_wb_frm" id="frm_wb_frm" method="post">
+				<input type="hidden" name="reqPage" id="reqPage" value="carRentInq"/>
+				<input type="hidden" name="f_current_page" id="f_current_page" value="" />
+				<input type='hidden' name="cont_no" id="cont_no" value="" />
+				<input type='hidden' name="cont_no_seq" id="cont_no_seq" value="" />
+				<input type='hidden' name="in_path_gb" id="in_path_gb" value="1" />
+						<div class="bg_top"></div>
+						
+						<div class="cont_box">
+							<div class="cont_head">
+								<h3>대여요금 관리</h3>
+								<ul>
+									<li><span class="home"></span></li>
+									<li>대여관리</li>
+									<li class="current">대여요금 관리</li>
+								</ul>
+							</div><!--// cont_head -->
+							<!--- 탭 Area Start --->
+							<table width="100%">
+								<tbody>
+									<tr>
+										<td width="70%">
+											<ul class="tab1" style="position:relative; z-index:1000;">							  	
+									            <li id="car_01_li" class="on"><a href="#" id="btn_car_01" onclick="javascript:fnTabClick('01');">소형</a></li>
+									            <li id="car_02_li" ><a href="#" id="btn_car_02" onclick="javascript:fnTabClick('02');">중형</a></li>
+									            <li id="car_03_li"><a href="#" id="btn_car_03" onclick="javascript:fnTabClick('03');">대형</a></li>
+									            <li id="car_05_li"><a href="#" id="btn_car_05" onclick="javascript:fnTabClick('05');">승합/RV</a></li>
+									            <li id="car_04_li"><a href="#" id="btn_car_04" onclick="javascript:fnTabClick('04');">수입</a></li>
+								        	</ul>						  
+										</td>
+									</tr>
+									<tr height="1">
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+							<!--- 탭 Area End --->
+							<fieldset>
+								<table class="table_01">
+									<colgroup>										
+										<col width="10%">
+										<col width="*">
+										<col width="10%">
+										<col width="10%">
+										<col width="10%">
+										<col width="10%">										
+										<col width="15%">
+									</colgroup> 
+									<tbody>
+										<tr>	                                
+			                                <th>차종모델</th>
+											<td>
+												<input type="text" name="mdl_nm_srch" id="mdl_nm_srch" value="" style="width:90%">
+			                                </td>
+			                                <th>사용여부</th>
+											<td>
+												<select name="use_yn_srch" id="use_yn_srch">
+			                                    	<option value="전체" selected="selected">전체</option>
+													<option value="Y">Y</option>
+													<option value="N">N</option>
+			                                    </select>
+			                                    &nbsp;&nbsp;
+			                                </td>
+			                                <td rowspan="2" class="alg_ct">
+				                            	<span class="btn_base"><a href="#;" id="btn_inq"><span class="search"></span>조회</a></span>
+											</td>
+			                                <th>그룹추가</th>
+			                                <td style="border-left:0px; text-align:center;">
+			                                    <span class="btn_base"><a href="#;" id="btn_row_insert">추가</a></span>
+												<span class="btn_base"><a href="#;" id="btn_row_delete">삭제</a></span>
+												<span class="btn_base"><a href="#;" id="btn_save_grid">저장</a></span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</fieldset>
+							<!---- 파일 목록 JQgrid Area Start ---->
+							<div class="grid_wrap">
+								<div class="ui-state-default ui-jqgrid-hdiv" style="width: 1003px;">
+									<div class="ui-jqgrid-hbox">
+										<table class="ui-jqgrid-htable" style="width:985px" role="grid"  cellspacing="0" cellpadding="0" border="0">
+											<colgroup>
+												<col width="33px">
+												<col width="90px">
+												<col width="90px">
+												<col width="90px">
+												<col width="90px">
+												<col width="90px">
+												<col width="90px">
+												<col width="90px">
+												<col width="72px">
+												<col width="180px">
+												<col width="70px">
+											</colgroup> 
+											<thead>
+												<tr class="ui-jqgrid-labels jqg-second-row-header" role="rowheader">
+													<th id="celltbl_cb" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" rowspan="2">
+														<div id="jqgh_celltbl_cb">
+															<input role="checkbox" id="cb_celltbl" class="cbox" type="checkbox">
+														</div>
+													</th>
+													<th role="columnheader" class="ui-state-default ui-th-column-header ui-th-ltr" colspan="4" style="height: 22px; border-top-width: 0px; border-top-style: none;">
+														<p align="center">대여기간별 요금</p>
+													</th>
+													<th role="columnheader" class="ui-state-default ui-th-column-header ui-th-ltr" colspan="3" style="height: 22px; border-top-width: 0px; border-top-style: none;">
+														<p align="center">대여시간별 요금</p>
+													</th>
+													<th id="celltbl_USE_YN" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" rowspan="2">
+														<div id="jqgh_celltbl_USE_YN" class="ui-jqgrid-sortable">사용여부</div>
+													</th>
+													<th role="columnheader" class="ui-state-default ui-th-column-header ui-th-ltr" colspan="2" style="height: 22px; border-top-width: 0px; border-top-style: none;">
+														<p align="center">차량모델</p>
+													</th>
+												</tr>
+												<tr role="rowheader" class="ui-jqgrid-labels jqg-third-row-header">
+													<th id="celltbl_STD_AMT_2DD" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr">
+														<div id="jqgh_celltbl_STD_AMT_2DD" class="ui-jqgrid-sortable" style="top: 4px;">
+															1~2일
+														</div>
+													</th>
+													<th id="celltbl_STD_AMT_4DD" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr">
+														<div id="jqgh_celltbl_STD_AMT_4DD" class="ui-jqgrid-sortable">
+															3~4일
+														</div>
+													</th>
+													<th id="celltbl_STD_AMT_6DD" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr">
+														<div id="jqgh_celltbl_STD_AMT_6DD" class="ui-jqgrid-sortable">
+															5~6일
+														</div>
+													</th>
+													<th id="celltbl_STD_AMT_7DD" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr">
+														<div id="jqgh_celltbl_STD_AMT_7DD" class="ui-jqgrid-sortable">
+															7일 이상
+														</div>
+													</th>
+													<th id="celltbl_STD_AMT_6TIME" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr">
+														<div id="jqgh_celltbl_STD_AMT_6TIME" class="ui-jqgrid-sortable">
+															6시간
+														</div>
+													</th>
+													<th id="celltbl_STD_AMT_10TIME" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr">
+														<div id="jqgh_celltbl_STD_AMT_10TIME" class="ui-jqgrid-sortable">
+															10시간
+														</div>
+													</th>
+													<th id="celltbl_STD_AMT_12TIME" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr">
+														<div id="jqgh_celltbl_STD_AMT_12TIME" class="ui-jqgrid-sortable">
+															12시간
+														</div>
+													</th>
+													<th id="celltbl_MDL_NM" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr">
+														<div id="jqgh_celltbl_MDL_NM" class="ui-jqgrid-sortable">
+															모델
+														</div>
+													</th>
+													<th id="celltbl_INS_BTN" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr">
+														<div id="jqgh_celltbl_INS_BTN" class="ui-jqgrid-sortable">
+															등록
+														</div>
+													</th>
+												</tr>
+											</thead>
+										</table>
+									</div>
+								</div>
+								<div class="jqgrid-td-wrap" style="height: 382px; width: 1003px;">
+									<table id="celltbl" style="width: 985px;">
+										<colgroup>
+											<col width="32px">
+											<col width="90px">
+											<col width="90px">
+											<col width="90px">
+											<col width="90px">
+											<col width="90px">
+											<col width="90px">
+											<col width="90px">
+											<col width="72px">
+											<col width="180px">
+											<col width="70px">
+										</colgroup> 
+										<tbody>
+											<tr>
+												<td><input type="checkbox" ></td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>Y</td>
+												<td >NEW EF 소나타</td>
+												<td><img src="images/btn_search.gif" title="모델변경"></td>
+											</tr>
+											<tr>
+												<td><input type="checkbox" ></td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>100,000</td>
+												<td>Y</td>
+												<td >NEW EF 소나타</td>
+												<td><img src="images/btn_search.gif" title="모델변경"></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						<!---- 파일 목록 JQgrid Area End ---->
+					</div><!--// cont_box -->
+					<div class="bg_foot"></div>
+				</form>	
+				</div><!--// content -->
+				
+			</div><!--// container -->
+		</div><!--// wrap -->
+</body>
+</html>

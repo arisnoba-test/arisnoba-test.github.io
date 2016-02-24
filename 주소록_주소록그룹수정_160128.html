@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/base.css" />
 	<link rel="stylesheet" type="text/css" href="css/ubst.css" />
 	<link rel="stylesheet" type="text/css" href="jqgrid/jqgridInit.css"/>
-	<link rel="stylesheet" type="text/css" href="jqgrid/ui.jqgrid.css"/>
+		<link rel="stylesheet" type="text/css" href="jqgrid/ui.jqgrid.css"/>
 	<link rel="stylesheet" type="text/css" href="css/update_v1.css" /> <!--- 20160109 렌트업 업데이트 --->
 	
 	<script type="text/javascript" src="js/common/lib/jquery-1.7.2.min.js" ></script>
@@ -22,63 +22,49 @@
 	<body style="background: rgb(255, 255, 255);" cz-shortcut-listen="true"> <!--<![endif]-->
 		<div class="pop_wrap">
 			<h1>
-				<span>폐차내역 상세보기</span>
+				<span>주소록 그룹 수정</span>
 			</h1>
 			<form name="frm" id="frm_wb_frm" method="post">
 			<input type="hidden" name="cust_clt_no" id="cust_clt_no" value="">
 			<input type="hidden" name="rem_cash" id="rem_cash" value="7340">
 			<div class="pop_body">
-				<h4>차량정보</h4>
 				<fieldset>
-					<div class="float_left" style="width:700px">
+					<div class="float_left" style="width:500px">
 						<table class="table_01 mb10">
 							<colgroup>
-								<col width="12%">
-								<col width="38%">
-								<col width="12%">
+								<col width="20%">
 								<col width="*">
 							</colgroup> 
 							<tbody>
 								<tr>
-									<th>차량번호</th>
-									<td> 00허1234</td>
-									<th>차량모델</th>
-									<td>모닝</td>
+									<th>구분</th>
+									<td><label for=""><input type="radio" checked="" /> 고객 </label><label for=""><input type="radio" /> 거래처</label></td>
 								</tr>
 								<tr>
-									<th>차량연식</th>
-									<td>2009</td>
-									<th>최초등록일</th>
-									<td>2009-01-21</td>
+									<th>그룹명</th>
+									<td>
+										<input type="text" style="width:95%" value="특별관리 고객" /><br />
+										한글 20자 / 영문 40자 이내
+									</td>
 								</tr>
 								<tr>
-									<th>차량만료일</th>
-									<td>2016-01-21</td>
-									<th>연장횟수</th>
-									<td>2</td>
+									<th>특이사항</th>
+									<td>
+										<textarea name="" id="" cols="70" rows="3">2회 이상 대여금 미수 고객</textarea><br />한글 50자 / 영문 100자 이내
+									</td>
+								</tr>
+								<tr>
+									<th>사용여부</th>
+									<td><label for=""><input type="radio" checked="" /> 사용 </label><label for=""><input type="radio" /> 사용안함</label></td>
 								</tr>
 							</tbody>
 						</table>
-						<h4>폐차정보</h4>
-						<table class="table_01 mb10">
-							<colgroup><col width="12%;" /><col width="98%;" /></colgroup>
-							<tbody>
-								<tr>
-									<th>폐차일</th><td>2016-01-21</td>
-								</tr>
-								<tr>
-									<th>폐차비용</th><td>3,000,000</td>
-								</tr>
-								<tr>
-									<th>비고</th><td>비고입니다.</td>
-								</tr>
-							</tbody>
-						</table>
-					</div><!--// 전화번호 입력 -->
+					</div>
 				</fieldset>
-				
 				<div class="btn_wrap">
+					<span class="btn_base1"><a href="#;" id="btn_save">저장</a></span>
 					<span class="btn_base1"><a href="#;" id="btn_close">닫기</a></span>
+					<span class="btn_base1 float_right"><a href="#;" id="btn_close">삭제</a></span>
 				</div>
 				<div class="box_foot"></div>
 			</div>
