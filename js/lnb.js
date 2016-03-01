@@ -12,8 +12,8 @@ jQuery(function($){
 		]},
 		{'name':'대학광장','link':'','sdp':[
 			{'name':'공지사항','link':'02_sub01.html'},
-			{'name':'학사안내','link':'#'},
-			{'name':'장학정보','link':'#'},
+			{'name':'학사안내','link':'02_sub02.html'},
+			{'name':'장학정보','link':'02_sub03.html'},
 			{'name':'총장 신문고','link':'#'}
 		]},
 		{'name':'대학생활안내','link':'#','sdp':[
