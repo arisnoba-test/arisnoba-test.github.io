@@ -145,6 +145,14 @@ ul, ol
 	-moz-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
+.btn-close {
+	width: 50px;
+	height: 50px;
+	background: url(../images/svg/close.svg) no-repeat center center;
+	background-size: 40%;
+	border: 0;
+	fill: #fff;
+}
 #lnb {
 	position: fixed;
 	width: 80%;
@@ -188,14 +196,7 @@ ul, ol
 			text-align: right;
 			padding: 0;
 			height: 50px;
-			.btn-close {
-				width: 50px;
-				height: 50px;
-				background: url(../images/svg/close.svg) no-repeat center center;
-				background-size: 40%;
-				border: 0;
-				fill: #fff;
-			}
+			
 		}
 	}
 	.lnb-list {
@@ -727,4 +728,37 @@ i {
 			}
 		}
 	}
+}
+
+
+.popWarp {
+	#header {
+		text-align: left;
+		padding-left: 15px;
+		font-size: 14px;
+	}
+	
+}
+.attachment {
+	li {
+		&:first-child {border-top: 1px solid #e2e2e2;}
+		&:before{
+			display: inline-block;
+			font-family: 'FontAwesome';
+			content: "\f016";
+			margin-right: 5px;
+		}
+		padding: 8px;
+		border-bottom: 1px solid #e2e2e2;
+	}
+}
+table {
+	width: 100%;
+	border: 1px solid #E3E3E3;
+	tr {
+		border-bottom: 1px solid #E3E3E3;
+		&:last-child {border-bottom: 0;}
+	}
+	th {  padding: 8px;}
+	td {  padding: 8px;}
 }
