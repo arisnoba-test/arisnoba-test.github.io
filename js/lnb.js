@@ -14,12 +14,12 @@ jQuery(function($){
 			{'name':'공지사항','link':'02_sub01.html'},
 			{'name':'학사안내','link':'02_sub02.html'},
 			{'name':'장학정보','link':'02_sub03.html'},
-			{'name':'총장 신문고','link':'#'}
+			{'name':'총장 신문고','link':'02_sub04.html'}
 		]},
 		{'name':'대학생활안내','link':'#','sdp':[
-			{'name':'학부학사일정','link':'#'},
-			{'name':'부서 검색','link':'#'},
-			{'name':'식단 안내','link':'#'},
+			{'name':'학부학사일정','link':'03_sub01.html'},
+			{'name':'부서 검색','link':'03_sub02.html'},
+			{'name':'식단 안내','link':'03_sub03.html'},
 			{'name':'휴복학 안내','link':'#'}
 		]},
 		{'name':'입학안내','link':'#','sdp':[
@@ -133,7 +133,12 @@ jQuery(function($){
 		$('#lnb').css({right:0})
 		$('.container').css({position:'fixed', top:0})
 	})
-
+	$('.overlay').on("click", function(){
+		$('#lnb').css({right:'-80%'})
+		$('.container').css({position:'relative'})
+		$('.container').removeClass('position')
+		$('.overlay').toggle();
+	})
 	
 	
 });
