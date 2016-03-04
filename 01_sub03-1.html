@@ -74,13 +74,13 @@
             </ul>
         </div>
         <div id="contents">
-            <div class="sub-tab">
-                <ul class="row text-center">
-					<li class="col-xs-6 active"><a href="">조직도</a></li>
-                    <li class="col-xs-6 "><a href="01_sub03-2.html">부서 및 연락처</a></li>
-                </ul>
-            </div>
-            <div class="article row content-table">
+            <div class="article content-table p15">
+				<div class="sub-tab">
+					<ul class="row text-center">
+						<li class="col-xs-6 active"><a href="">조직도</a></li>
+						<li class="col-xs-6 "><a href="01_sub03-2.html">부서 및 연락처</a></li>
+					</ul>
+				</div>
             	<p>클릭하시면 크게 볼 수 있습니다.</p>
 				<a href="images/organization.jpg"><img src="images/organization.jpg" alt=""></a>
             </div>
@@ -91,72 +91,6 @@
 			</p>
 		</footer>
     </div>
-
-     
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <!-- End SlidesJS Required -->
-
-    <!-- SlidesJS Required: Link to jquery.slides.js -->
-    <script src="js/jquery.slides.min.js"></script>
-    <!-- End SlidesJS Required -->
-
-    <!-- SlidesJS Required: Initialize SlidesJS with a jQuery doc ready -->
-    <script>
-        function wrapWindowByMask() {
-            //화면의 높이와 너비를 구한다.
-            var maskHeight = $(document).height();
-            var maskWidth = $(window).width();
-
-            //마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
-            $('#main_mask').css({
-                'width': maskWidth,
-                'height': maskHeight
-            });
-
-            //애니메이션 효과 - 일단 1초동안 까맣게 됐다가 80% 불투명도로 간다.
-            $('#main_mask').fadeIn('fast');
-            $('#main_mask').fadeTo("slow", 0.8);
-        }
-        $(function () {
-            $('#slides').slidesjs({
-                width: 320,
-                height: 185,
-                play: {
-                    active: true,
-                    auto: true,
-                    interval: 4000,
-                    swap: true
-                }
-            });
-        });
-        $(document).ready(function () {
-            $('.openID').click(function (e) {
-                e.preventDefault();
-                wrapWindowByMask();
-                $('.idPopup').fadeIn(500);
-                $('.idPopup').fadeTo("slow", 1);
-                var $layerPopupObj = $('.idPopup');
-                var left = ($(window).scrollLeft() + ($(window).width() - $layerPopupObj.width()) / 1);
-                var top = ($(window).scrollTop() + ($(window).height() - $layerPopupObj.height()) / 1);
-                $layerPopupObj.css({
-                    'left': left,
-                    'top': top,
-                    'position': 'absolute'
-                });
-                $('body').css('position', 'relative').append($layerPopupObj);
-            });
-            //검은 막을 눌렀을 때
-            $('#main_mask').click(function () {
-                $(this).hide();
-                $('.idPopup').hide();
-            });
-            $('.close').click(function () {
-                $('.idPopup, #main_mask').hide();
-            });
-
-        });
-    </script>
-    <!-- End SlidesJS Required -->
 
 
 </body>

@@ -402,6 +402,8 @@ i {
 		}
 		.article {
 			&.row {padding: 0 15px;}
+			&:after {display: table; content: " ";clear: both;}
+			&:before {display: table; content: " ";clear: both;}
 			h5 {
 				font-weight: bold;
 				margin-top: 2.5em;
@@ -655,7 +657,7 @@ i {
 	height: 40px;
 	line-height: 40px;
 	color: #999;
-	margin-bottom: 15px;
+	margin: 15px auto;
 	ul {
 		width: auto;
 		padding: 0 15px;
@@ -795,6 +797,7 @@ table {
 
 /* 총장 건의 함 */
 .sinmungo {
+	margin-top: 15px;
 	input, textarea {width: 100%; margin-bottom: 5px; padding: 8px;}
 }
 
