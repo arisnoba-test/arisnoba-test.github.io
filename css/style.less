@@ -800,6 +800,7 @@ i {
 		padding-left: 15px;
 		font-size: 14px;
 	}
+	.words {padding: 15px;}
 	
 }
 .attachment {
@@ -846,4 +847,65 @@ table {
 		&:first-child {color:@red;}
 		&:last-child {color:@blue;}
 	}
+}
+
+.login {
+	width: 305px;
+	margin: 0 auto;
+	&>div {
+		margin: 15px 0;
+	}
+	.logo {
+		width: 100%;
+		height: 110px;
+		background-image: url("../images/login-img.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		margin: 135px 0 60px;
+	}
+	i {font-size: 15px; color: #2b834f; padding: 0 20px;}
+	input {
+		&::-webkit-input-placeholder {
+			color: #fff;
+		}
+		width: 253px;
+		height: 45px;
+		border: 0;
+		font-size: 15px;
+		color: #fff;
+		background-color: #4DC38D;
+	}
+	.id {
+		width: 100%;
+		height: 46px;
+		background-color: #4DC38D;
+		border-radius: 3px 3px 0px 0px;
+		border-bottom: 1px solid #098A3E;
+		overflow: hidden;
+	}
+	.pw {
+		border-top: 1px solid #83D5AF;
+		background-color: #4DC38D;
+//		border-bottom: 1px solid #098A3E;
+	}
+	.btn-login {
+		width: 100%;
+		height: 46px;
+		background-color: #14a6de;
+		border-radius: 0px 0px 3px 3px;
+		border: 0;
+		font-size: 18px;
+		letter-spacing: 1px;
+		color: #fff;
+	}
+}
+.login-copyright {
+	position: absolute;
+	bottom: 15px;
+	width: 100%;
+	text-align: center;
+	color: #ccc;
+	font-family: SpoqaHanSans;
+	font-size: 8px;
 }
