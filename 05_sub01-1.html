@@ -85,15 +85,68 @@
 				<li class="col-xs-6 "><a href="">봉사활동/적정인성결과</a></li>
 			</ul>
 		</div>
-		<div class="sub-tab">
-			<ul class="text-center clearfix">
-				<li class="col-xs-6 active"><a href="">신상정보관리</a></li>
-				<li class="col-xs-6"><a href="">학적변동내용</a></li>
-			</ul>
-		</div>
-		<div class="clearfix"></div>
-		<div id="contents" class="article">
-			
+<!--		<div class="clearfix"></div>-->
+		<div id="contents" class="">
+			<div class="article p15">
+				<div class="sub-tab">
+					<ul class="row text-center">
+						<li class="col-xs-6 active"><a href="05_sub01-1.html">신상정보관리</a></li>
+						<li class="col-xs-6"><a href="05_sub01-2.html">학적변동내역</a></li>
+					</ul>
+				</div>
+				<div>
+					<p>이하 정보는 지도교수상담, 생활기록부, 장학선정 등의 참고자료로 활용됩니다. 없는 항목은 '없음' 또는 기본정보와 동일하게 입력하시기 바랍니다.</p>
+					<div class="separator" style="margin:20px 0;"></div>
+				</div>
+				
+				<div class="form-group row">
+					<div class="col-xs-4">
+						<img src="..." alt="" class="img-responsive img-rounded">
+					</div>
+					<div class="col-xs-8">
+						<input class="form-control input-sm" type="text" placeholder="이름(한자)" readonly>
+						<input class="form-control input-sm" type="text" placeholder="이름(영문)" readonly>
+						<input class="form-control input-sm" type="text" placeholder="국적" readonly>
+					</div>
+				</div>
+
+				
+				<form action="">
+					<div class="form-group">
+						<label for="inputMobile">휴대폰<span>*</span></label>
+						<input type="text" class="form-control input-sm" id="inputMobile" placeholder="휴대폰번호" required>
+					</div>
+					<div class="form-group">
+						<label for="inputTel">전화<span>*</span></label>
+						<input type="text" class="form-control input-sm" id="inputTel" placeholder="전화번호" required>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">이메일 주소</label>
+						<input type="email" class="form-control input-sm" id="exampleInputEmail1" placeholder="이메일을 입력하세요">
+					</div>
+					<div class="row">
+						<div class="form-group col-xs-6 ">
+							<label for="sltBack" class="control-label">거래은행</label>
+							<div class="">
+								<select id="sltBack" class="form-control input-sm">
+									<option value="대구">대구</option>
+									<option value="국민">국민</option>
+
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-xs-6 ">
+							<label for="bankName" class="control-label">예금주</label>
+							<input type="text" class="form-control input-sm" id="bankName" placeholder="예금주">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="bankNumber">계좌번호</label>
+						<input type="text" class="form-control input-sm" id="bankNumber" placeholder="계좌번호를 입력하세요">
+					</div>
+
+				</form>
+			</div>
 		</div>
 
 		<footer id="footer" class="text-center">
