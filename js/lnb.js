@@ -29,12 +29,12 @@ jQuery(function($){
 		{'name':'학사정보','link':'#','sdp':[
 			{'name':'학적조회','link':'05_sub01-1.html'},
 			{'name':'강의계획서','link':'05_sub02.html'},
-			{'name':'수강내역','link':'#'},
-			{'name':'강의시간표','link':'#'},
-			{'name':'강의평가','link':'#'},
-			{'name':'성적조회','link':'#'},
-			{'name':'등록금납부확인','link':'#'},
-			{'name':'졸업사정확인','link':'#'}
+			{'name':'수강신청내역','link':'05_sub03.html'},
+			{'name':'강의시간표','link':'05_sub04.html'},
+			{'name':'강의평가/성적','link':'05_sub05-1.html'},
+			{'name':'등록금납부확인','link':'05_sub06.html'},
+			{'name':'장학선발정보','link':'05_sub07.html'},
+			{'name':'봉사활동/적성인성결과','link':'05_sub08.html'}
 		]}
 		
 	]
