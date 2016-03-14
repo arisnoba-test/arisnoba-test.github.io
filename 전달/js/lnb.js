@@ -22,9 +22,9 @@ jQuery(function($){
 			{'name':'식단 안내','link':'03_sub03.html'},
 			{'name':'휴복학 안내','link':'#'}
 		]},
-		{'name':'입학안내','link':'','sdp':[
-			{'name':'대학입학','link':'04_sub01-1.html'},
-			{'name':'대학원입학','link':'04_sub02-1.html'}
+		{'name':'입학안내','link':'#','sdp':[
+			{'name':'대학입학','link':'#'},
+			{'name':'대학원입학','link':'#'}
 		]},
 		{'name':'학사정보','link':'#','sdp':[
 			{'name':'학적조회','link':'#'},
