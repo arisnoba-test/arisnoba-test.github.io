@@ -27,7 +27,7 @@ jQuery(function($){
 			{'name':'대학원입학','link':'04_sub02-1.html'}
 		]},
 		{'name':'학사정보','link':'#','sdp':[
-			{'name':'학적조회','link':'#'},
+			{'name':'학적조회','link':'05_sub01.html'},
 			{'name':'강의계획서','link':'#'},
 			{'name':'수강내역조회','link':'#'},
 			{'name':'강의시간표','link':'#'},
